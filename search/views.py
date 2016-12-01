@@ -8,7 +8,7 @@ from tweepy import OAuthHandler
 
 
 def tweet_list(request):
-
+    print ("AQUI")
     return render(request, 'search/tweet_list.html', {'errorcode':-1,'message':"Introduzca el texto a buscar"})
 
 
@@ -17,15 +17,15 @@ def get_queryset(request):
                         '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')
     auth.set_access_token('800728740082765824-MEGhu5oDdSajvFKtcS3jcMrb8rmEkGq',
                           'RxJYOFORpm3CMX8BwCW6o5ckJ0q1TwaVfa0n3eUeAoLnR')
-    api = API(auth,proxy='proxy.lcc.uma.es:3128')
+    api = API(auth)
     tosearch=request.GET['q']
     error=0
     message=""
     results=""
     if (tosearch and tosearch.strip()):
         results = api.search(tosearch,count=100)
-        # for result in results:
-        #   print(result)
+        for result in results:
+          print(result)
         message="Se ha realizado correctamente su busqueda de: \""+tosearch+"\""
     else:
         error=1
