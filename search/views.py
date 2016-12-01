@@ -20,7 +20,7 @@ def get_queryset(request):
     api = API(auth,proxy='proxy.lcc.uma.es:3128')
     tosearch=request.GET['q']
     error=0
-    message="Hola"
+    message=""
     results=""
     if (tosearch and tosearch.strip()):
         results = api.search(tosearch,count=100)
