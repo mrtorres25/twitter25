@@ -23,7 +23,12 @@ def get_queryset(request):
     message=""
     results=""
     if (tosearch and tosearch.strip()):
-        results = api.search(tosearch,count=100)
+        country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
+        # print(api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country'))
+        # for c in country:
+        countryid=country[0].id
+        print(countryid)
+        results = api.search(tosearch,count=10)
         for result in results:
           print(result)
         message="Se ha realizado correctamente su busqueda de: \""+tosearch+"\""
