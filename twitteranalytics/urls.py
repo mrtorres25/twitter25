@@ -17,5 +17,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'users.views.index', name = 'login'),
+    url(r'^location/', 'location.views.index', name = 'location')
 ]

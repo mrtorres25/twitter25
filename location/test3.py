@@ -16,7 +16,31 @@ def getStatusId(url):
     id = url[idx+1:]
     return id
 
-def getLocation(tweet):
+def getTweetUser(tweet):
+    return tweet.user.name + " | " + tweet.user.screen_name
+
+def getTweetText(tweet):
+    return tweet.text
+
+def getTweetPlace(tweet):
+    if (tweet.place) is not None:
+        loc = tweet.place.name + ", " + tweet.place.country
+        print(loc)
+        # geocode_result = gmaps.geocode(loc)
+        # print(geocode_result)
+        # lat = geocode_result[0]["geometry"]["location"]["lat"]
+        # lon = geocode_result[0]["geometry"]["location"]["lng"]
+        lon = tweet.place.bounding_box.coordinates[0][0][0]
+        lat = tweet.place.bounding_box.coordinates[0][0][1]
+        returnstr = str(lat) + "," + str(lon)
+
+    else:
+        returnstr = "No place available."
+
+    return returnstr
+
+def getTweetLocation(tweet):
+
     if (tweet.coordinates) is not None:
         coords = tweet.coordinates
         lon = coords["coordinates"][0]
@@ -25,46 +49,27 @@ def getLocation(tweet):
         print(returnstr)
 
     else:
-        if (tweet.place) is not None:
-            loc = tweet.place.name + ", " + tweet.place.country
-            print(loc)
-            # geocode_result = gmaps.geocode(loc)
-            # print(geocode_result)
-            # lat = geocode_result[0]["geometry"]["location"]["lat"]
-            # lon = geocode_result[0]["geometry"]["location"]["lng"]
-            lon = tweet.place.bounding_box.coordinates[0][0][0]
-            lat = tweet.place.bounding_box.coordinates[0][0][1]
-            returnstr = str(lat) + "," + str(lon)
-            print(returnstr)
-        else:
-            returnstr = "No location available."
-            print("No location available.")
+        returnstr = "No coordinates available."
+        print("No location available.")
 
     return returnstr
 
 if __name__ == '__main__':
-
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    gmaps = googlemaps.Client(key="AIzaSyDXl1-VxlNFMcq0E13ln51D-5rMLxDjrVc")
     api = tweepy.API(auth)
-    user = api.me()
+    url = "https%3A%2F%2Ftwitter.com%2FBalbonator%2Fstatus%2F771499504667426816"
+    url = url.replace("%3A",":")
+    url = url.replace("%2F","/")
+    print("oleeee oleee")
+    tweet = api.get_status(getStatusId(url))
+    location = getTweetLocation(tweet)
+    place = getTweetPlace(tweet)
+    text = getTweetText(tweet)
+    user = getTweetUser(tweet)
+    print(location)
+    print(place)
+    print(text)
+    print(user)
+    print(url)
 
-    #Tweet con ubicación en Montevideo, Uruguay
-    #id = "804123242063609856"
-    #Tweet con 10 RT
-    #id = "804256400511827969"
-    #Tweet con la rehostia de RTs
-    #id = "804065897862361088"
-
-    url = "https://twitter.com/Balbonator/status/771499504667426816"
-    id = getStatusId(url)
-    print(api.get_status(id).text)
-    getLocation(api.get_status(id))
-    print(api.retweeters(id))
-    retweeters = api.retweeters(id)
-    for user in retweeters:
-        currentuser = api.get_user(user)
-        print(currentuser)
-        if (currentuser.status) is not None:
-            getLocation(currentuser.status)
