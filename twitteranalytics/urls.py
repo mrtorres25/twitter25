@@ -17,5 +17,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^location/', 'location.views.index', name = 'location')
+    url(r'^location/', include('location.urls'))
 ]

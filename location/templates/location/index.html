@@ -25,10 +25,15 @@
     <input class="searchfield" id="searchbox" name="url" type="text" placeholder="Insert tweet URL">
 </form>
     <br>
-    {{ place }} <br>
-    {{ location }} <br>
-    {{ text }} <br>
-    {{ user }} <br>
-    {{ url }}
+    <h3> {{ user }} </h3>
+    <h4> {{ text }} </h4>
+    <b>Coordinates:</b> {{ coordinates }} <br>
+    <b>Location:</b> {{ location }}
+<br><br>
+    <b> Total retweets: </b> {{ rts }} <br>
+    <b> Retweets available locations: </b> <br>
+    {% for location in rtslocation %}
+      {{ location }} <br>
+    {% endfor %}
 
 {% endblock content %}

@@ -23,17 +23,30 @@ def get_location(request):
     url = url.replace("%2F","/")
     print("oleeee oleee")
     tweet = api.get_status(getStatusId(url))
+    coordinates = getTweetCoordinates(tweet)
     location = getTweetLocation(tweet)
-    place = getTweetPlace(tweet)
+    if(coordinates=="" and location!=""):
+        coordinates = getTweetPlace(tweet)
+    else:
+        coordinates = "No coordinates available."
+    if(location==""):
+        location = "No location available."
     text = getTweetText(tweet)
     user = getTweetUser(tweet)
+    retweets = getRetweetAmount(tweet)
+    rtslocation = getRetweetsLocation(getStatusId(url),api)
+    if (len(rtslocation)==0):
+        rtslocation = ["None"]
     context = {
+        'coordinates' : coordinates,
         'location' : location,
-        'places' : place,
         'text' : text,
         'user' : user,
-        'url' : url
+        'url' : url,
+        'rts' : retweets,
+        'rtslocation' : rtslocation
     }
+    #print(getRetweetsLocation(getStatusId(url),api))
     return render(request, 'location/index.html', context)
 
 def getStatusId(url):
@@ -41,40 +54,64 @@ def getStatusId(url):
     id = url[idx+1:]
     return id
 
+def getRetweetAmount(tweet):
+    return tweet.retweet_count
+
 def getTweetUser(tweet):
-    return tweet.user.name + " | " + tweet.user.screen_name
+    return tweet.user.name + " | @" + tweet.user.screen_name
 
 def getTweetText(tweet):
     return tweet.text
 
+def getTweetLocation(tweet):
+    if(tweet.place) is not None:
+        returnstr = tweet.place.name + ", "+ tweet.place.country
+    else:
+        returnstr = ""
+    return returnstr
+
 def getTweetPlace(tweet):
     if (tweet.place) is not None:
-        loc = tweet.place.name + ", " + tweet.place.country
-        print(loc)
         # geocode_result = gmaps.geocode(loc)
         # print(geocode_result)
         # lat = geocode_result[0]["geometry"]["location"]["lat"]
         # lon = geocode_result[0]["geometry"]["location"]["lng"]
         lon = tweet.place.bounding_box.coordinates[0][0][0]
         lat = tweet.place.bounding_box.coordinates[0][0][1]
-        returnstr = str(lat) + "," + str(lon)
+        returnstr = str(lat) + ", " + str(lon)
 
     else:
-        returnstr = "No place available."
+        returnstr = ""
 
     return returnstr
 
-def getTweetLocation(tweet):
+def getTweetCoordinates(tweet):
 
     if (tweet.coordinates) is not None:
         coords = tweet.coordinates
         lon = coords["coordinates"][0]
         lat = coords["coordinates"][1]
-        returnstr = str(lat) + "," + str(lon)
+        returnstr = str(lat) + ", " + str(lon)
         print(returnstr)
 
     else:
-        returnstr = "No coordinates available."
+        returnstr = ""
         print("No location available.")
 
     return returnstr
+
+def getRetweetsLocation(id, api):
+    retweeters = api.retweeters(id)
+    locations = []
+    i = 0
+    for user in retweeters:
+        print(i)
+        i = i+1
+        currentuser = api.get_user(user)
+        if (currentuser.status) is not None:
+            currentlocation = getTweetLocation(currentuser.status)
+            if(currentlocation!=""):
+                locations.append(currentlocation)
+
+    print(locations)
+    return locations
