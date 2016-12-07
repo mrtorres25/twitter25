@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 
 from django.shortcuts import render
@@ -9,7 +7,7 @@ from tweepy import OAuthHandler
 
 def tweet_list(request):
     print ("AQUI")
-    return render(request, 'search/tweet_list.html', {'errorcode':-1,'message':"Introduzca el texto a buscar"})
+    return render(request, 'searchByUrl/tweet_list.html', {'errorcode':-1,'message':"Introduzca la URL d"})
 
 
 def get_queryset(request):
@@ -23,23 +21,28 @@ def get_queryset(request):
     message=""
     results=""
     if (tosearch and tosearch.strip()):
-        country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
+        # country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
         # print(api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country'))
         # for c in country:
         # print(api.get_status('805709551337086980'))
-        countryid=country[0].id
-        print(countryid)
-        results = api.search(tosearch,count=10)
-        for result in results:
-          print(result)
-        message="Se ha realizado correctamente su busqueda de: \""+tosearch+"\""
+        # countryid=country[0].id
+        # print(countryid)
+        # for string in tosearch.split("/"):
+        #     print(string)
+        idTweet=tosearch.split("/")[5].split("?")[0]
+        # print(idTweet)
+        results = api.get_status(idTweet)
+        # for result in results:
+        #   print(result)
+        print(results)
+        message="Se ha realizado correctamente su busqueda del tweet con url: \""+tosearch+"\""
     else:
         error=1
-        message="No se puede realizar la busqueda de: \""+tosearch+"\""
+        message="No se puede realizar la busqueda del tweet con url: \""+tosearch+"\""
 
     context = {
         'result_with_text': results,
         'errorcode':error,
         'message':message
                }
-    return render(request, 'search/tweet_list.html', context)
+    return render(request, 'searchByUrl/tweet_list.html', context)

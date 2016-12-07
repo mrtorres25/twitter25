@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}
+    Search Text in Tweets
+{% endblock title %}
+{% block javascript %}
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                "language": {
+                    url: "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
+                },
+                "order": [[2, "desc"]]
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function showhelp() {
+            if (helpurl.style.display == 'none') {
+                helpurl.style.display = 'block';
+                showhelplabel.innerHTML = "Ya se como obtener la URL";
+            } else {
+                helpurl.style.display = 'none';
+                showhelplabel.innerHTML = "¿Como obtener la URL de un Tweet?";
+            }
+        }
+    </script>
+{% endblock javascript %}
+{% block content %}
+    {% if errorcode == 0 %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endif %}
+    {% if errorcode == -1 %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endif %}
+    {% if errorcode == 1 %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endif %}
+    <div>
+        <form id="searchform" action="/searchurl/get_queryset/" method="get" accept-charset="utf-8">
+            <button class="searchbutton" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search Tweet by URL"
+                   size="125%">
+
+        </form>
+        <button onclick="showhelp()" value="¿Como obtener la URL de un Tweet?">
+            <i class="fa fa-question"></i>
+            <a id="showhelplabel">¿Como obtener la URL de un Tweet?</a>
+        </button>
+    </div>
+    <div id="helpurl" style="display:none">
+        <h3>Esto es un ejemplo de como obtener la URL de un tweet.</h3>
+        {% load static %}
+        <img src="{% static "searchByUrl/tweetURLANo.png" %}" alt="Un ejemplo de URL"/>
+    </div>
+
+    <h2>Información</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>User:</th>
+            <td>{{ result_with_text.user.name}}</td>
+        </tr>
+        <tr>
+            <th>Text:</th>
+            <td>{{ result_with_text.text }}</td>
+        </tr>
+        <tr>
+            <th>Retweet:</th>
+            <td>{{ result_with_text.retweet_count }}</td>
+        </tr>
+    </table>
+
+
+    {#    <blockquote class="twitter-tweet"><p lang="es" dir="ltr">🌧🌱⚽️ <a href="https://twitter.com/hashtag/RMCity?src=hash">#RMCity</a><br>En 15 minutos, volvemos a los entrenamientos y comenzamos a preparar el partido contra el <a href="https://twitter.com/BVB">@BVB</a>. <a href="https://twitter.com/hashtag/HalaMadrid?src=hash">#HalaMadrid</a> <a href="https://t.co/9EQ351WoG8">pic.twitter.com/9EQ351WoG8</a></p>&mdash; Real Madrid C. F. (@realmadrid) <a href="https://twitter.com/realmadrid/status/805709551337086980">December 5, 2016</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>#}
+
+    {#<table id="table_id" class="display">#}
+    {#    <thead>#}
+    {#    <tr>#}
+    {#        <th>User <i class="fa fa-user" aria-hidden="true"></i></th>#}
+    {#        <th>Tweet <i class="fa fa-twitter" aria-hidden="true"></i></th>#}
+    {#        <th>Fecha/Hora <i class="fa fa-clock-o" aria-hidden="true"></i></th>#}
+    {#        <th>Retweets <i class="fa fa-retweet" aria-hidden="true"></i></th>#}
+    {#        <th>Me Gusta <i class="fa fa-heart" aria-hidden="true"></i></th>#}
+    {#    </tr>#}
+    {#    </thead>#}
+    {#    <tbody>#}
+    {#    {% for resultado in result_with_text %}#}
+    {#        <tr>#}
+    {#            <td>{{ resultado.user.name }}</td>#}
+    {#            <td>{{ resultado.text }}</td>#}
+    {#            <td>{{ resultado.created_at }}</td>#}
+    {#            <td>{{ resultado.retweet_count }}</td>#}
+    {#            <td>{{ resultado.favorite_count }}</td>#}
+    {#        </tr>#}
+    {#    {% endfor %}#}
+    {#    </tbody>#}
+    {#</table>#}
+{% endblock content %}
