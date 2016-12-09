@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from users.forms import LoginForm
-from django.contrib.auth import logout as django_logout, login, authenticate
+from django.contrib.auth import logout as django_logout, login as django_login, authenticate
 from django.contrib.auth.models import Permission, User
-from django.shortcuts import get_object_or_404
 
 def login(request):
-    error_messages = []
-
+    message = ""
+    errorcode = ""
     # POST for login
     if (request.method == 'POST'):
         form = LoginForm(request.POST)
@@ -15,20 +14,24 @@ def login(request):
             password = form.cleaned_data['password']
             user = authenticate(username = username, password = password)
             if user is None:
-                error_messages.append('Nombre de usuario o contraseña incorrectos')
+                message = "Nombre de usuario o contraseña incorrectos"
+                errorcode = "danger"
             else:
                 if user.is_active:
-                    login(request, user)
-                    return redirect('home')
+                    django_login(request, user)
+                    message = "Ha iniciado sesión correctamente como \"" + username + "\""
+                    errorcode = "success"
                 else:
-                    error_messages.append("El usuario no está activo")
+                    message = "El usuario no está activo"
+                    errorcode = "warning"
     
     # GET for loading HTML
     else:
         form = LoginForm()
 
     context = {
-        'errors': error_messages,
+        'message': message,
+        'errorcode': errorcode,
         'form': form
     }
     
