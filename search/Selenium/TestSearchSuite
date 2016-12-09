@@ -8,8 +8,10 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="TestSearch.html">Search Renfe</a></td></tr>
+<tr><td><a href="TestSearch.html">Search Renfe Cualquiera</a></td></tr>
 <tr><td><a href="TestSearchNothing.html">Search Nothing</a></td></tr>
+<tr><td><a href="TestSearchAfrikaans.html">TestSearchAfrikaans</a></td></tr>
+<tr><td><a href="TestSearchEnglish.html">TestSearchEnglish</a></td></tr>
 </tbody></table>
 </body>
 </html>

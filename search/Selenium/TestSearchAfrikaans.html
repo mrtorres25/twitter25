@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://127.0.0.1:8000/" />
-<title>Search Nothing</title>
+<title>TestSearchAfrikaans</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Search Nothing</td></tr>
+<tr><td rowspan="1" colspan="3">TestSearchAfrikaans</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -22,9 +22,19 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=searchbox</td>
-	<td></td>
+	<td>Renfe</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=languageCode</td>
+	<td>label=Afrikaans : Afrikaans</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -32,15 +42,16 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=div.alert.alert-danger</td>
-	<td>No se puede realizar la busqueda de: &quot;&quot;</td>
-</tr>
-<tr>
 	<td>assertElementPresent</td>
-	<td>css=div.alert.alert-danger</td>
+	<td>css=div.alert.alert-success</td>
 	<td></td>
 </tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.alert.alert-success</td>
+	<td>Se ha realizado correctamente su busqueda de: &quot;Renfe&quot; ---- Idioma seleccionado: Af</td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
