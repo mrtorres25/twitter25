@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^login/', 'users.views.login', name = 'login'),
     url(r'^logout/', 'users.views.logout', name = 'logout'),
     url(r'^$', 'users.views.login', name = 'home'),
+    url(r'^searchurl/', include('searchByUrl.urls')),
 ]
