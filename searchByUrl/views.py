@@ -1,16 +1,17 @@
-# Create your views here.
-
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from tweepy import API
 from tweepy import OAuthHandler
 import  requests as r
 import json
 
+
+@login_required(login_url='/login/')
 def tweet_list(request):
     print ("AQUI")
     return render(request, 'searchByUrl/tweet_list.html', {'errorcode':-1,'message':"Introduzca la URL del Tweet"})
 
-
+@login_required(login_url='/login/')
 def get_queryset(request):
     auth = OAuthHandler('wbSKrzlEya3UJgBzkIkSEkz3F',
                         '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')

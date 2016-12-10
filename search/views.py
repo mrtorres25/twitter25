@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -191,13 +192,12 @@ languages=[
       {"code":"yo","name":"Yoruba","nativeName":"Yorùbá"},
       # {"code":"za","name":"Zhuang, Chuang","nativeName":"Saɯ cueŋƅ, Saw cuengh"}
     ]
+
+@login_required(login_url='/login/')
 def tweet_list(request):
-    print ("AQUI")
-
-
     return render(request, 'search/tweet_list.html', {'errorcode':-1,'message':"Introduzca el texto a buscar",'languages':languages})
 
-
+@login_required(login_url='/login/')
 def get_queryset(request):
     auth = OAuthHandler('wbSKrzlEya3UJgBzkIkSEkz3F',
                         '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')
