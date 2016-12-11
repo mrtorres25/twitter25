@@ -3,6 +3,7 @@ from .forms import UrlForm
 from django.http import HttpResponseRedirect
 import tweepy
 from django.core.context_processors import csrf
+from tweepy.error import TweepError
 
 consumer_key = "CCVw7yjUE0oMAXWfLlar2lgqa"
 consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
@@ -19,35 +20,44 @@ def get_location(request):
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
     url = request.GET.get('url')
-    url = url.replace("%3A",":")
-    url = url.replace("%2F","/")
-    print("oleeee oleee")
-    tweet = api.get_status(getStatusId(url))
-    coordinates = getTweetCoordinates(tweet)
-    location = getTweetLocation(tweet)
-    if(coordinates=="" and location!=""):
-        coordinates = getTweetPlace(tweet)
+    if((url is not None) and (url!="")):
+        print("bueno")
+        url = url.replace("%3A",":")
+        url = url.replace("%2F","/")
+        print("oleeee oleee")
+        try:
+            tweet = api.get_status(getStatusId(url))
+        except TweepError:
+            return render(request, 'location/index.html', {'user' : "Invalid URL or tweet ID, try again."})
+        coordinates = getTweetCoordinates(tweet)
+        location = getTweetLocation(tweet)
+        if(coordinates=="" and location!=""):
+            coordinates = getTweetPlace(tweet)
+        else:
+            coordinates = "No coordinates available."
+        if(location==""):
+            location = "No location available."
+        text = getTweetText(tweet)
+        user = getTweetUser(tweet)
+        retweets = getRetweetAmount(tweet)
+        rtslocation = getRetweetsLocation(getStatusId(url),api)
+        if (len(rtslocation)==0):
+            rtslocation = ["None"]
+        context = {
+            'coordinates' : coordinates,
+            'location' : location,
+            'text' : text,
+            'user' : user,
+            'url' : url,
+            'rts' : retweets,
+            'rtslocation' : rtslocation
+        }
+        #print(getRetweetsLocation(getStatusId(url),api))
+        return render(request, 'location/index.html', context)
+
     else:
-        coordinates = "No coordinates available."
-    if(location==""):
-        location = "No location available."
-    text = getTweetText(tweet)
-    user = getTweetUser(tweet)
-    retweets = getRetweetAmount(tweet)
-    rtslocation = getRetweetsLocation(getStatusId(url),api)
-    if (len(rtslocation)==0):
-        rtslocation = ["None"]
-    context = {
-        'coordinates' : coordinates,
-        'location' : location,
-        'text' : text,
-        'user' : user,
-        'url' : url,
-        'rts' : retweets,
-        'rtslocation' : rtslocation
-    }
-    #print(getRetweetsLocation(getStatusId(url),api))
-    return render(request, 'location/index.html', context)
+        print("venga")
+        return render(request, 'location/index.html', {'user' : "Empty URL, enter a valid URL."})
 
 def getStatusId(url):
     idx = url.rfind('/')
