@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 import tweepy
 from django.core.context_processors import csrf
 from tweepy.error import TweepError
+from django.contrib.auth.decorators import login_required
 
 consumer_key = "CCVw7yjUE0oMAXWfLlar2lgqa"
 consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
@@ -11,10 +12,12 @@ consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
 access_token = "15037577-sjnuYAPJeZz56QNCPUpG2NT2Ay7HW4n4Ip50E0z9Y"
 access_token_secret = "4xwgzze0mFRpAzu9Lc4PD2BtlNz67mlEqjWCoEJe7k7Pd"
 
+@login_required(login_url='/login/')
 def index(request):
     print("arsaaa")
-    return render(request, 'location/index.html')
+    return render(request, 'location/index.html',{'user':""})
 
+@login_required(login_url='/login/')
 def get_location(request):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
