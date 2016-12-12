@@ -14,6 +14,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls import patterns
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -21,6 +23,14 @@ urlpatterns = [
     url(r'^login/', 'users.views.login', name = 'login'),
     url(r'^logout/', 'users.views.logout', name = 'logout'),
     url(r'^searchurl/', include('searchByUrl.urls'), name = 'searchurl'),
+    url(r'^location/', include('location.urls'), name = 'location'),
+    url(r'^geoposition/', include('geoposition.urls'), name = 'geoposition'),
     url(r'^$', 'users.views.login', name = 'home'),
-    url(r'^location/', include('location.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$',
+            'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT, }),
+    )
