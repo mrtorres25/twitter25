@@ -42,8 +42,8 @@
                             <li><a href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a></li>
                             <li><a href="{% url 'search' %}">Text Search</a></li>
                             <li><a href="{% url 'searchurl' %}">URL Search</a></li>
-                            <li><a href="{% url 'home' %}">Location</a></li>
-                            <li><a href="{% url 'home' %}">Geoposition</a></li>
+                            <li><a href="{% url 'location' %}">Location</a></li>
+                            <li><a href="{% url 'geoposition' %}">Geoposition</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             {% if user.is_authenticated %}
