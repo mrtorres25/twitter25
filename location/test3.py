@@ -3,7 +3,7 @@ from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 import tweepy
-import googlemaps
+# import googlemaps
 
 consumer_key = "CCVw7yjUE0oMAXWfLlar2lgqa"
 consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
