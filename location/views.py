@@ -20,7 +20,7 @@ def index(request):
 def get_location(request):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth)
+    api = tweepy.API(auth,proxy="proxy.wifi.uma.es:3128")
     url = request.GET.get('url')
     if((url is not None) and (url!="")):
         url = url.replace("%3A",":")
