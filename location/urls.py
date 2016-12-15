@@ -19,6 +19,6 @@ from . import views
 
 # Este es del LOCATION
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.index, name="location"),
     url(r'^get_location/$',views.get_location)
 ]

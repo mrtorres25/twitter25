@@ -19,6 +19,6 @@ from . import views
 
 # Este es del GEOPOSITION
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.index, name="geoposition"),
     url(r'^get_geoposition/$',views.get_geoposition)
 ]

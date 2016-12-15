@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^search/', include('search.urls')),
     url(r'^login/', 'users.views.login', name = 'login'),
     url(r'^logout/', 'users.views.logout', name = 'logout'),
-    url(r'^searchurl/', include('searchByUrl.urls'), name = 'searchurl'),
-    url(r'^location/', include('location.urls'), name = 'location'),
+    url(r'^searchurl/', include('searchByUrl.urls')),
+    url(r'^location/', include('location.urls')),
     url(r'^geoposition/', include('geoposition.urls'), name = 'geoposition'),
     url(r'^$', 'users.views.login', name = 'home'),
 ]
