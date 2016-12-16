@@ -25,21 +25,21 @@ def get_queryset(request):
     tweetembed=""
     if (tosearch and tosearch.strip()):
         try:
-            embed=tosearch.split("?")[0].replace("/","%2F").replace(":","%3A")
-            # print(tosearch.replace("/","%2F"))
-            # print(tosearch.replace(":","%3A"))
-            # print(embed)
-            # print(requests.get("https://publish.twitter.com/oembed",url=embed))
-            # response=r.get("https://publish.twitter.com/oembed?url=https://twitter.com/realmadrid/status/806502275686481928")
-            response = r.get("https://publish.twitter.com/oembed?url="+embed)
-            j=json.dumps(response.json())
-            print()
-            # j=json.load(response.json())
-            # print(j['html'])
-            tweetembed=json.loads(j.replace("\'","\""))['html']
-            # print(json.load(tweetembed)['html'])
-            # print(json.load(r.get("https://publish.twitter.com/oembed?url="+embed).json()))
-            print("HOLA")
+            # embed=tosearch.split("?")[0].replace("/","%2F").replace(":","%3A")
+            # # print(tosearch.replace("/","%2F"))
+            # # print(tosearch.replace(":","%3A"))
+            # # print(embed)
+            # # print(requests.get("https://publish.twitter.com/oembed",url=embed))
+            # # response=r.get("https://publish.twitter.com/oembed?url=https://twitter.com/realmadrid/status/806502275686481928")
+            # response = r.get("https://publish.twitter.com/oembed?url="+embed)
+            # j=json.dumps(response.json())
+            # print()
+            # # j=json.load(response.json())
+            # # print(j['html'])
+            # tweetembed=json.loads(j.replace("\'","\""))['html']
+            # # print(json.load(tweetembed)['html'])
+            # # print(json.load(r.get("https://publish.twitter.com/oembed?url="+embed).json()))
+            # print("HOLA")
             idTweet=tosearch.split("/")[5].split("?")[0]
             results = api.get_status(idTweet)
             print(results)
@@ -67,7 +67,7 @@ def get_querysetbyid(request):
                         '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')
     auth.set_access_token('800728740082765824-MEGhu5oDdSajvFKtcS3jcMrb8rmEkGq',
                           'RxJYOFORpm3CMX8BwCW6o5ckJ0q1TwaVfa0n3eUeAoLnR')
-    api = API(auth)
+    api = API(auth, proxy='proxy.wifi.uma.es:3128')
     tosearch=request.GET['q']
     error=0
     message=""
@@ -78,12 +78,12 @@ def get_querysetbyid(request):
             embed=tosearch.split("?")[0].replace("/","%2F").replace(":","%3A")
             # print(tosearch.replace("/","%2F"))
             # print(tosearch.replace(":","%3A"))
-            # print(embed)
+            print(embed)
             # print(requests.get("https://publish.twitter.com/oembed",url=embed))
             # response=r.get("https://publish.twitter.com/oembed?url=https://twitter.com/realmadrid/status/806502275686481928")
-            response = r.get("https://publish.twitter.com/oembed?url="+embed)
+            response = r.get("https://publish.twitter.com/oembed?url="+embed,proxies={'https': 'https://proxy.wifi.uma.es:3128'})
             j=json.dumps(response.json())
-            print()
+            print("AQUIJSON")
             # j=json.load(response.json())
             # print(j['html'])
             tweetembed=json.loads(j.replace("\'","\""))['html']
@@ -91,6 +91,7 @@ def get_querysetbyid(request):
             # print(json.load(r.get("https://publish.twitter.com/oembed?url="+embed).json()))
             print("HOLA")
             idTweet=tosearch.split("/")[5].split("?")[0]
+            print(idTweet)
             results = api.get_status(idTweet)
             print(results)
             message = "Se ha realizado correctamente su busqueda del tweet con url: \"" + tosearch + "\""
