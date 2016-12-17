@@ -21,13 +21,34 @@ def login(request):
                     django_login(request, user)
                     message = "Ha iniciado sesión correctamente como \"" + username + "\""
                     errorcode = "success"
+                    context = {
+                        'message': message,
+                        'errorcode': errorcode,
+                        'form': form
+                    }
+                    return render(request, 'users/home.html', context)
                 else:
                     message = "El usuario no está activo"
                     errorcode = "warning"
-    
+
+                    context = {
+                        'message': message,
+                        'errorcode': errorcode,
+                        'form': form
+                    }
+                    return render(request,'users/index.html')
     # GET for loading HTML
     else:
-        form = LoginForm()
+        if request.user.is_authenticated():
+            message = "Este es su panel de inicio \"" + request.user.username + "\""
+            errorcode = "success"
+            context = {
+                'message': message,
+                'errorcode': errorcode,
+            }
+            return render(request, 'users/home.html', context)
+        else:
+            form = LoginForm()
 
     context = {
         'message': message,
