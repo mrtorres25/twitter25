@@ -422,7 +422,7 @@ def get_queryset(request):
     message=""
     results=""
     if (tosearch and tosearch.strip()):
-        # country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
+        country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
         # print(api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country'))
         # for c in country:
         # print(api.get_status('805709551337086980'))
@@ -439,7 +439,9 @@ def get_queryset(request):
                 if (country != "Cualquiera"):
                     places = api.geo_search(query=country, granularity="country")
                     place_id = places[0].id
-                    print("TODO "+place_id)
+                    print(country)
+                    print("PAIS " + place_id)
+                    print(places)
                     messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
                     results = api.search(tosearch, count=100, lang=languageCode, geocode=place_id)
                 else:
@@ -451,14 +453,20 @@ def get_queryset(request):
                 messagelang = messagelang + "Cualquiera"
                 if (country != "Cualquiera"):
                     places = api.geo_search(query=country, granularity="country")
-                    place_id = places[0].id
                     print(places)
-                    print("PAIS "+place_id)
+                    # print(float(places[0].bounding_box.coordinates[0][0][0]))
+                    # print(float(places[0].bounding_box.coordinates[0][0][1]))
+                    # print(float(places[0].centroid[0]))
+                    # print(float(places[0].centroid[1]))
+                    # coordinatesa = api.reverse_geocode(lat=places[0].centroid[0], long=places[0].centroid[1], granularity='country')
+                    # print("REVERSE ")
+                    # print(coordinatesa)
+                    place_id = places[0].id
+                    # print(country)
+                    print("PAIS " + place_id + " 96683cc9126741d1")
+                    # print(places)
                     messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
                     results = api.search(tosearch, count=100, geocode=place_id)
-                    # response=r.get("https://api.twitter.com/1.1/geo/search.json?query="+"Spain")
-                    # j = json.dumps(response.json())
-                    # print(j)
                     print(results)
                 else:
                     results = api.search(tosearch, count=100)

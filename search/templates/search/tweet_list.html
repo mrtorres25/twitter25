@@ -55,7 +55,7 @@
             <th>Retweets <i class="fa fa-retweet" aria-hidden="true"></i></th>
             <th>Me Gusta <i class="fa fa-heart" aria-hidden="true"></i></th>
             {#        <th>Lugar <i class="fa fa-map-marker" aria-hidden="true"></i></th>#}
-            {#        <th>País <i class="fa fa-globe" aria-hidden="true"></i></th>#}
+            <th>Lugar <i class="fa fa-globe" aria-hidden="true"></i></th>
             {#        <th>Coordenadas <i class="fa fa-location-arrow" aria-hidden="true"></i></th>#}
         </tr>
         </thead>
@@ -70,7 +70,7 @@
                 {#            <td>{{ resultado.place.full_name }}</td>#}
                 {#            <td>{{ resultado.place.country }}</td>#}
                 {#            <td>{{ resultado.place.bounding_box.coordinates }}</td>#}
-            </tr>
+                <td>{{ resultado.place.full_name }}:{{ resultado.place.country }}</td>
         {% endfor %}
         </tbody>
     </table>
