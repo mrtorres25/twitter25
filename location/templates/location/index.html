@@ -1,23 +1,9 @@
-{% extends "base.html" %}
-{% load staticfiles %}
+{% extends 'base.html' %}
 
 {% block title %}Location{% endblock %}
 
-{% block javascript %}
-    <script>
-        $(document).ready(function () {
-            $('#table_id').DataTable({
-                "language": {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
-                },
-                "order": [[ 2, "desc" ]]
-            });
-        });
-    </script>
-{% endblock javascript %}
-
 {% block content %}
-
+{% csrf_token %}
 <form id="searchform" action="/location/get_location/" method="get" accept-charset="utf-8">
     <button class="searchbutton" type="submit">
         <i class="fa fa-search"></i>

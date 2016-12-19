@@ -1,63 +1,95 @@
 {% load staticfiles %}
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>{% block title %}{% endblock title %}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static "searchByUrl/favicon.png" %}">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-            crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-        {% block css %}{% endblock css %}
+    <title>{% block title %}{% endblock title %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-        <!-- JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-                crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://use.fontawesome.com/9391582cae.js"></script>
-        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-        {% block javascript %}{% endblock javascript %}
-    </head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
-	<body>
-		<div class="container">
-            <!-- NAVBAR -->
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Twitter Analytics</a>
-                    </div>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "searchByUrl/css/styles.css" %}">
+    {% block css %}{% endblock css %}
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a></li>
-                            <li><a href="{% url 'search' %}">Text Search</a></li>
-                            <li><a href="{% url 'searchurl' %}">URL Search</a></li>
-                            <li><a href="{% url 'location' %}">Location</a></li>
-                            <li><a href="{% url 'geoposition' %}">Geoposition</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            {% if user.is_authenticated %}
-                                <li><a href="{% url 'logout' %}">Logout</a></li>
-                            {% else %}
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <!-- JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/9391582cae.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    {% block javascript %}{% endblock javascript %}
 
-            {% block content %}{% endblock content %}
+</head>
 
-		</div>
-	</body>
+<body>
+{% csrf_token %}
+<div class="container">
+    <!-- NAVBAR -->
+    <div class="container-fluid" style="margin-bottom: 5%;">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}"><img height="48px" src="{% static "searchByUrl/Logo.png" %}" alt="TALogo"></a>
+                <a href="{% url 'home' %}"><p class="navbar-text">Twitter Analytics</p></a>
+            </div>
+
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav ">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'home' %}">Inicio<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{% url 'search' %}">Buscar Texto</a></li>
+                        <li><a href="{% url 'searchurl' %}">Información Tweet</a></li>
+                        <li><a href="{% url 'location' %}">Localización</a></li>
+                    {% else %}
+                        <li><a href="{% url 'home' %}">Ingresar<span class="sr-only">(current)</span></a></li>
+                    {% endif %}
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 5%;">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Salir</a></li>
+                        {#                            {% else %}#}
+                        {#                                <li><a href="{% url 'login' %}">Ingresar</a></li>#}
+                    {% endif %}
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    {% block content %}{% endblock content %}
+</div>
+<a href="#" class="scrollup">Scroll</a>
+</body>
+ <script>
+   $(document).ready(function () {
+       $(window).scroll(function () {
+           if ($(this).scrollTop() > 100) {
+               $('.scrollup').fadeIn();
+           } else {
+               $('.scrollup').fadeOut();
+           }
+       });
+       $('.scrollup').click(function () {
+           $("html, body").animate({
+               scrollTop: 0
+           }, 600);
+           return false;
+       });
+   });
+ </script>
 </html>
