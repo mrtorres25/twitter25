@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'searchByUrl',
     'retweet',
     'location'
+    'searchUser',
 )
 
 MIDDLEWARE_CLASSES = (
