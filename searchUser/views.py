@@ -48,11 +48,3 @@ def get_queryset(request):
         'followers':followers,
                }
     return render(request, 'searchUser/tweet_list.html', context)
-
-def countrycoord(country):
-    response = r.get("https://restcountries.eu/rest/v1/alpha/" + country)
-    j = response.json()
-    print(j['latlng'][0])
-    print(j['latlng'][1])
-
-    return (str(j['latlng'][0])+","+str(j['latlng'][1])+",100km")
