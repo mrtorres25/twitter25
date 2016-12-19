@@ -2,6 +2,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static "searchByUrl/favicon.png" %}">
+
     <title>{% block title %}{% endblock title %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -12,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "searchByUrl/css/styles.css" %}">
     {% block css %}{% endblock css %}
 
     <!-- JavaScript -->
@@ -40,7 +43,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Twitter Analytics</a>
+                <a class="navbar-brand" href="{% url 'home' %}"><img height="48px" src="{% static "searchByUrl/Logo.png" %}" alt="TALogo"></a>
+                <a href="{% url 'home' %}"><p class="navbar-text">Twitter Analytics</p></a>
             </div>
 
             <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
