@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^logout/', 'users.views.logout', name = 'logout'),
     url(r'^searchurl/', include('searchByUrl.urls')),
     url(r'^location/', include('location.urls')),
+    url(r'^retweet/', include('retweet.urls')),
     url(r'^$', 'users.views.login', name = 'home'),
 ]
