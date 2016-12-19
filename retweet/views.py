@@ -27,6 +27,7 @@ def get_queryset(request):
     if (tosearch and tosearch.strip()):
         try:
             embed = tosearch.split("?")[0].replace("/", "%2F").replace(":", "%3A")
+            #response = r.get("https://publish.twitter.com/oembed?url=" + embed)
             response = r.get("https://publish.twitter.com/oembed?url=" + embed,proxies={'https': 'https://proxy.wifi.uma.es:3128'})
             j = json.dumps(response.json())
             print()
