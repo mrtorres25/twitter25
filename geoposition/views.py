@@ -6,6 +6,7 @@ from tweepy.error import TweepError
 from django.contrib.auth.decorators import login_required
 import requests
 from shutil import copyfile
+import json
 
 consumer_key = "CCVw7yjUE0oMAXWfLlar2lgqa"
 consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
@@ -16,66 +17,67 @@ access_token_secret = "4xwgzze0mFRpAzu9Lc4PD2BtlNz67mlEqjWCoEJe7k7Pd"
 @login_required(login_url='/login/')
 def index(request):
     copyfile('media/blank.png','media/map.png')
-    return render(request, 'geoposition/index.html',{'user':""})
+    return render(request, 'geoposition/index.html',{'username':""})
 
 @login_required(login_url='/login/')
 def get_geoposition(request):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
+    #api = tweepy.API(auth)
     api = tweepy.API(auth,proxy="proxy.wifi.uma.es:3128")
-    url = request.GET.get('url')
-    if((url is not None) and (url!="")):
-        url = url.replace("%3A",":")
-        url = url.replace("%2F","/")
+    originalurl = request.GET.get('url')
+    if((originalurl is not None) and (originalurl!="")):
+        url = originalurl.replace("%3A",":").replace("%2F","/")
         try:
             tweet = api.get_status(getStatusId(url))
+            results = api.retweets(getStatusId(url))
+            embeddedtweet = getEmbeddedTweet(originalurl)
         except TweepError:
             copyfile('media/blank.png','media/map.png')
-            return render(request, 'geoposition/index.html', {'msg' : "Invalid URL or tweet ID, try again.",'user':""})
+            return render(request, 'geoposition/index.html', {'msg' : "Invalid URL or tweet ID, try again.",'username':""})
         coordinates = getTweetCoordinates(tweet)
         location = getTweetLocation(tweet)
         if(coordinates=="" and location!=""):
             coordinates = getTweetPlace(tweet)
         else:
             coordinates = "No coordinates available."
-        rtscoordinates = getRetweetsCoordinates(getStatusId(url),api)
+        rts = getRetweetsCoordinates(getStatusId(url),api)
+        rtscoordinates = rts["locations"]
+        rtsplaces = rts["places"]
         text = getTweetText(tweet)
         user = getTweetUser(tweet)
-        if(coordinates!="No coordinates available."):
-            #http://maps.google.com/maps/api/staticmap?center=37.8654938,-4.7791247&zoom=14&size=512x512&maptype=roadmap&markers=color:blue|label:M|37.8654938,-4.7791247&sensor=false
-            msg = "http://maps.google.com/maps/api/staticmap?center="+coordinates+"&zoom=4&size=1024x1024&maptype=roadmap&markers=color:blue|"+coordinates
+
+        if(coordinates=="No coordinates available." and len(rtscoordinates==0)):
+            copyfile('media/blank.png','media/map.png')
+            return render(request, 'geoposition/index.html', {'msg':"No location available.",'username':"",'results':results})
+        else:
+            if(coordinates!="No coordinates available."):
+                msg = "http://maps.google.com/maps/api/staticmap?center="+coordinates+"&zoom=4&size=1024x1024&maptype=roadmap&markers=color:blue|"+coordinates
+            else:
+                msg = "http://maps.google.com/maps/api/staticmap?center="+rtscoordinates[0]+"&zoom=4&size=1024x1024&maptype=roadmap"
+
             for coord in rtscoordinates:
                 msg += "&markers="+coord
             msg = msg + "&sensor=false"
 
-            if (len(rtscoordinates)==0):
-                rtscoordinates = ["None"]
-
-            proxies = {}
-            session = requests.Session()
-            session.proxies = proxies
-            r = session.get(msg)
-            f = open('media/map.png','wb')
-            f.write(r.content)
-            f.close()
-            msg=""
+            mapurl = msg
+            msg = ""
 
             context = {
                 'msg' : msg,
-                'user' : user,
+                'mapurl' : mapurl,
+                'username' : user,
                 'coordinates' : coordinates,
                 'text' : text,
+                'results' : results,
                 'rtscoordinates' : rtscoordinates
             }
             #print(getRetweetsLocation(getStatusId(url),api))
             return render(request, 'geoposition/index.html', context)
-        else:
-            copyfile('media/blank.png','media/map.png')
-            return render(request, 'geoposition/index.html', {'msg':"No location available.",'user':""})
 
     else:
         copyfile('media/blank.png','media/map.png')
-        return render(request, 'geoposition/index.html', {'msg' : "Empty URL, enter a valid URL.",'user':""})
+        return render(request, 'geoposition/index.html', {'msg' : "Empty URL, enter a valid URL.",'username':""})
 
 def getTweetLocation(tweet):
     if(tweet.place) is not None:
@@ -128,9 +130,18 @@ def getTweetCoordinates(tweet):
 
     return returnstr
 
+def getEmbeddedTweet(url):
+    embed = url.replace("/", "%2F").replace(":", "%3A")
+    #response = r.get("https://publish.twitter.com/oembed?url=" + embed,proxies={'https': 'https://proxy.wifi.uma.es:3128'})
+    j = requests.get("https://publish.twitter.com/oembed?url="+embed).json()
+    j = json.dumps(j)
+    tweetembed = json.loads(j.replace("\'", "\""))['html']
+    return tweetembed
+
 def getRetweetsCoordinates(id, api):
     retweeters = api.retweeters(id)
     locations = []
+    places = []
     i = 0
     for user in retweeters:
         print(i)
@@ -140,6 +151,8 @@ def getRetweetsCoordinates(id, api):
             currentlocation = getTweetPlace(currentuser.status)
             if(currentlocation!=""):
                 locations.append(currentlocation)
+            currentplace = getTweetLocation(currentuser.status)
+            if(currentplace!=""):
+                places.append(currentplace)
 
-    print(locations)
-    return locations
+    return {'locations':locations,'places':places}

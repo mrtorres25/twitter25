@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'search',
     'searchByUrl',
     'location',
-    'geoposition'
+    'geoposition',
+    'geosearch'
 )
 
 MIDDLEWARE_CLASSES = (
