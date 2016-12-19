@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'search',
     'searchByUrl',
     'retweet',
-    'location'
+    'location',
     'searchUser',
 )
 
