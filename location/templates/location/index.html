@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}Location{% endblock %}
+{% block title %}Map{% endblock %}
 
 {% block javascript %}
     <script>
@@ -14,6 +14,20 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        function seetweet() {
+            if (tweetcontainer.style.display == 'none') {
+                tweetcontainer.style.display = 'block';
+                eyebutton.className = "fa fa-eye-slash";
+                showtweetlabel.innerHTML = "Ocultar Tweet Original";
+            } else {
+                tweetcontainer.style.display = 'none';
+                eyebutton.className = "fa fa-eye";
+                showtweetlabel.innerHTML = "Ver Tweet Original";
+            }
+        }
+    </script>
+
 {% endblock javascript %}
 
 {% block content %}
@@ -22,18 +36,86 @@
     <button class="searchbutton" type="submit">
         <i class="fa fa-search"></i>
     </button>
-    <input class="searchfield" id="searchbox" name="url" type="text" placeholder="Insert tweet URL">
+    <input class="searchfield" id="searchbox" name="url" type="text" placeholder="Insertar URL del tweet">
 </form>
+<br>
+<button class="btn" type=button onclick="seetweet()">
+    <i id="eyebutton" class="fa fa-eye"></i>
+    <a id="showtweetlabel">Ocultar Tweet Original</a>
+</button>
+<br>
+<div id="tweetcontainer" style="display:block">
+    {{ jsonhtml|safe }}
+</div>
+<br>
     <br>
-    <h3> {{ user }} </h3>
-    <h4> {{ text }} </h4>
-    <b>Coordinates:</b> {{ coordinates }} <br>
-    <b>Location:</b> {{ location }}
-<br><br>
-    <b> Total retweets: </b> {{ rts }} <br>
-    <b> Retweets available locations: </b> <br>
-    {% for location in rtslocation %}
+
+    <b>Coordenadas del tweet original:</b> {{ coordinates }} <br> <br>
+    <b>Lugares de retweet:</b><br>
+    {% for location in rtscoordinates %}
       {{ location }} <br>
     {% endfor %}
+    <br>
 
+    <img src="{{ mapurl|safe }}" id="map"/>
+
+    <br>
+    <br>
+
+    {#    <table style="width:100%" border="2px">#}
+    {#        <tr>#}
+    {#            <th>User:</th>#}
+    {#            <td>{{ results.user.name }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>Text:</th>#}
+    {#            <td>{{ results.text }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>Retweet:</th>#}
+    {#            <td>{{ results.retweet_count }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>Me gusta:</th>#}
+    {#            <td>{{ results.favorite_count }}</td>#}
+                {#            <td>{{ results.place }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>Lugar:</th>#}
+    {#            <td>{{ results.place.full_name }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>País:</th>#}
+    {#            <td>{{ results.place.country }}</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <th>Coordenadas:</th>#}
+    {#            <td>{{ results.place.bounding_box.coordinates }}</td>#}
+    {#        </tr>#}
+    {#    </table>#}
+
+    <table id="table_id" class="display">
+        <thead>
+        <tr>
+            <th>User <i class="fa fa-user" aria-hidden="true"></i></th>
+            <th>Tweet <i class="fa fa-twitter" aria-hidden="true"></i></th>
+            <th>Fecha/Hora <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+  {#            <th>Retweets <i class="fa fa-retweet" aria-hidden="true"></i></th>#}
+  {#            <th>Me Gusta <i class="fa fa-heart" aria-hidden="true"></i></th>#}
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr>
+                <td><a href="/searchurl/get_queryset/?q=https://twitter.com/{{ result.user.screen_name }}/status/{{ result.id }}">{{ result.user.name }}</a></td>
+                <td>{{ result.text }}</td>
+                <td>{{ result.created_at }}</td>
+  {#                <td>{{ result.retweet_count }}</td>#}
+  {#                <td>{{ result.favorite_count }}</td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<br>
+<br>
 {% endblock content %}
