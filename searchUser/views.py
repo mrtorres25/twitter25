@@ -24,11 +24,16 @@ def get_queryset(request):
     error=0
     message=""
     results=""
+    followers=""
     if (tosearch and tosearch.strip()):
         try:
-            results = api.get_user(tosearch)
+            # print(tosearch)
+            results = api.get_user(screen_name=tosearch)
+            # print(results)
+            followers=api.followers(id=results.id)
+            # print(results)
+            print(followers)
             message = "Se ha realizado correctamente su busqueda de: \""+tosearch+"\""
-            print (results)
         except:
             error=1
             message = "Ha Ocurrido un error. No se puede realizar la busqueda de: \""+tosearch+"\""
@@ -40,6 +45,7 @@ def get_queryset(request):
         'result_with_text': results,
         'errorcode':error,
         'message':message,
+        'followers':followers,
                }
     return render(request, 'searchUser/tweet_list.html', context)
 

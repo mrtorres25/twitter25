@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'search',
     'searchByUrl',
     'searchUser',
-    'location'
+    'location',
 )
 
 MIDDLEWARE_CLASSES = (

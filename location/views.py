@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
-from .forms import UrlForm
-from django.http import HttpResponseRedirect
 import tweepy
-from django.core.context_processors import csrf
 from tweepy.error import TweepError
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from tweepy import API
+from tweepy import OAuthHandler
+import json
+import  requests as r
 
 consumer_key = "CCVw7yjUE0oMAXWfLlar2lgqa"
 consumer_secret = "zWko5Oqg32elKUrOiji49yC9LqqoGfKXl5IV6ij7dByIEYuRKJ"
@@ -15,7 +17,7 @@ access_token_secret = "4xwgzze0mFRpAzu9Lc4PD2BtlNz67mlEqjWCoEJe7k7Pd"
 @login_required(login_url='/login/')
 def index(request):
     print("arsaaa")
-    return render(request, 'location/index.html',{'user':""})
+    return render(request, 'location/index.html')
 
 @login_required(login_url='/login/')
 def get_location(request):
