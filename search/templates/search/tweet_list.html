@@ -32,7 +32,7 @@
         <label>País:</label>
         <select name="countryCode" style="padding-top: 5px;padding-bottom: 5px;">
              {% for country in countries %}
-                 <option value="{{ country }}">{{country}}</option>
+                 <option value="{{ country.code }}">{{country.name}}</option>
             {% endfor %}
         </select>
         <label>Idioma:</label>
