@@ -478,42 +478,48 @@ def get_queryset(request):
         # for country in countries:
         #     print(country)
         # print(languageCode)
-        try:
-            messagelang="Idioma seleccionado: "
-            if(languageCode!="0"):
-                messagelang=messagelang+languageCode.capitalize()
-                if (country != "Cualquiera"):
-                    messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
-                    results = api.search(tosearch, count=100, lang=languageCode, geocode=countrycoord(country))
-                else:
-                    messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
-                    results = api.search(tosearch, count=100, lang=languageCode)
-        # for result in results:
-        #   print(result)
+
+        messagelang="Idioma seleccionado: "
+        if(languageCode!="0"):
+            messagelang=messagelang+languageCode.capitalize()
+            if (country != "Cualquiera"):
+                messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
+                results = api.search(tosearch, count=100, lang=languageCode, geocode=countrycoord(country))
             else:
-                messagelang = messagelang + "Cualquiera"
-                if (country != "Cualquiera"):
-                    messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
-                    results = api.search(tosearch, count=100, geocode=countrycoord(country))
-                else:
-                    results = api.search(tosearch, count=100)
-                    messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
+                messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
+                results = api.search(tosearch, count=100, lang=languageCode)
 
-            message = "Se ha realizado correctamente su busqueda de: \""+tosearch+"\" ---- "+messagelang
-        except:
-            error=1
-            message = "Ha Ocurrido un error. No se puede realizar la busqueda de: \""+tosearch+"\""
+        else:
+            messagelang = messagelang + "Cualquiera"
+            if (country != "Cualquiera"):
+                messagelang = messagelang + " ---- País seleccionado: "+country.capitalize()
+                results = api.search(tosearch, count=100, geocode=countrycoord(country))
+            else:
+                results = api.search(tosearch, count=100)
+                messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
+            message = "Se ha realizado correctamente su búsqueda de: \""+tosearch+"\" ---- "+messagelang
 
+            coordinates = locateTweets(results)
+
+            if(len(coordinates)!=0):
+
+                msg = "http://maps.google.com/maps/api/staticmap?center="+coordinates[0]+"&zoom=2&size=1024x1024&maptype=roadmap"
+                for coord in coordinates:
+                    msg += "&markers="+coord
+                    msg = msg + "&sensor=false"
+            else:
+                msg = "http://maps.google.com/maps/api/staticmap?zoom=2&size=1024x1024&maptype=roadmap"
     else:
         error=1
-        message="No se puede realizar la busqueda de: \""+tosearch+"\""
+        message="No se puede realizar la búsqueda de: \""+tosearch+"\""
 
     context = {
         'result_with_text': results,
         'errorcode':error,
         'message':message,
         'languages': languages,
-        'countries':countries
+        'countries':countries,
+        'mapurl' : msg
                }
     return render(request, 'search/tweet_list.html', context)
 
@@ -524,3 +530,27 @@ def countrycoord(country):
     print(j['latlng'][1])
 
     return (str(j['latlng'][0])+","+str(j['latlng'][1])+",100km")
+
+def getTweetPlace(tweet):
+    if (tweet.place) is not None:
+        # geocode_result = gmaps.geocode(loc)
+        # print(geocode_result)
+        # lat = geocode_result[0]["geometry"]["location"]["lat"]
+        # lon = geocode_result[0]["geometry"]["location"]["lng"]
+        lon = tweet.place.bounding_box.coordinates[0][0][0]
+        lat = tweet.place.bounding_box.coordinates[0][0][1]
+        returnstr = str(lat) + "," + str(lon)
+    else:
+        returnstr = ""
+
+    return returnstr
+
+def locateTweets(results):
+    locations = []
+    for result in results:
+        location = getTweetPlace(result)
+        if(location!=""):
+            locations.append(location)
+
+    print(locations)
+    return locations
