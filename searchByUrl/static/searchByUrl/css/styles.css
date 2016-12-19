@@ -1,2 +1,22 @@
-body { padding-top:20px; }
+body { padding-top:20px;
+        background-image: url("../Logo.png");
+        padding:10px;
+}
 .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+
+.container{
+    background-color: white;
+    padding-bottom: 15px;
+}
+
+.scrollup {
+   width: 40px;
+   height: 40px;
+   opacity: 0.5;
+   position: fixed;
+   bottom: 50px;
+   right: 100px;
+   display: none;
+   text-indent: -9999px;
+   background: url('../up_arrow_copy.gif') no-repeat;
+}
