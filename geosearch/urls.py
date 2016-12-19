@@ -17,13 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
 
-# Este es del LOCATION
+# Este es del GEOPOSITION
 urlpatterns = [
-<<<<<<< HEAD
-    url(r'^$', views.index, name="location"),
-    url(r'^get_location/$',views.get_location)
-=======
-    url(r'^$', views.index, name = "location"),
-    url(r'^get_location/$', views.get_location),
->>>>>>> 4908ac77aec52f36c87a91a9d4aaa31a1dabafa4
+    url(r'^$', views.index, name="geosearch"),
+    url(r'^get_geosearch/$',views.get_geosearch)
 ]
