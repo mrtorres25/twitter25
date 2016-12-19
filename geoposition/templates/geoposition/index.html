@@ -19,11 +19,11 @@
             if (tweetcontainer.style.display == 'none') {
                 tweetcontainer.style.display = 'block';
                 eyebutton.className = "fa fa-eye-slash";
-                showtweetlabel.innerHTML = "Ocultar Tweet Original";
+                showtweetlabel.innerHTML = "Ver Tweet Original";
             } else {
                 tweetcontainer.style.display = 'none';
                 eyebutton.className = "fa fa-eye";
-                showtweetlabel.innerHTML = "Ver el Tweet Original";
+                showtweetlabel.innerHTML = "Ocultar Tweet Original";
             }
         }
     </script>
@@ -31,25 +31,25 @@
 {% endblock javascript %}
 
 {% block content %}
-<button class="btn" type=button onclick="seetweet()">
-    <i id="eyebutton" class="fa fa-eye"></i>
-    <a id="showtweetlabel">Ver el Tweet Original</a>
-</button>
-<br>
-<div id="tweetcontainer" style="display:none">
-    {{ jsonhtml|safe }}
-</div>
-<br>
+
 <form id="searchform" action="/geoposition/get_geoposition/" method="get" accept-charset="utf-8">
     <button class="searchbutton" type="submit">
         <i class="fa fa-search"></i>
     </button>
     <input class="searchfield" id="searchbox" name="url" type="text" placeholder="Insert tweet URL">
 </form>
+<br>
+<button class="btn" type=button onclick="seetweet()">
+    <i id="eyebutton" class="fa fa-eye"></i>
+    <a id="showtweetlabel">Ver el Tweet Original</a>
+</button>
+<br>
+<div id="tweetcontainer" style="display:block">
+    {{ jsonhtml|safe }}
+</div>
+<br>
     <br>
-    <h3> {{ msg }} </h3>
-    <h3> {{ username }} </h3>
-    <h4> {{ text }} </h4>
+
     <b>Original tweet coordinates:</b> {{ coordinates }} <br> <br>
     <b>Retweets places:</b><br>
     {% for location in rtscoordinates %}

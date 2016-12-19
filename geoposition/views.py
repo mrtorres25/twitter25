@@ -70,7 +70,8 @@ def get_geoposition(request):
                 'coordinates' : coordinates,
                 'text' : text,
                 'results' : results,
-                'rtscoordinates' : rtscoordinates
+                'rtscoordinates' : rtscoordinates,
+                'jsonhtml' : embeddedtweet
             }
             #print(getRetweetsLocation(getStatusId(url),api))
             return render(request, 'geoposition/index.html', context)
