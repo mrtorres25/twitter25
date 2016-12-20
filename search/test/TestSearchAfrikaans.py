@@ -13,7 +13,7 @@ class TestSearchAfrikaans(unittest.TestCase):
         binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
         self.driver.implicitly_wait(30)
-        self.base_url = "http://127.0.0.1:8000/"
+        self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
