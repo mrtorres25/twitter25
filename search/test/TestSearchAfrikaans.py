@@ -10,10 +10,10 @@ import unittest, time, re
 
 class TestSearchAfrikaans(unittest.TestCase):
     def setUp(self):
-        binary = FirefoxBinary(r'/opt/firefox/firefox')
-        self.driver = webdriver.Firefox(firefox_binary=binary)
+        binary = FirefoxBinary(r'/opt/firefox/firefox') #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
+        self.driver = webdriver.Firefox(firefox_binary=binary) #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(30)
-        self.base_url = "http://127.0.0.1:8080/"
+        self.base_url = "http://127.0.0.1:8080/"    #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -25,7 +25,7 @@ class TestSearchAfrikaans(unittest.TestCase):
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-        driver.find_element_by_xpath("(//a[contains(@href, '/search/')])[2]").click()
+        driver.find_element_by_id("toSearch").send_keys(Keys.ENTER) #ESTO HAY QUE PONERLO PARA USAR LOS BOTONES
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-info"))
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()
