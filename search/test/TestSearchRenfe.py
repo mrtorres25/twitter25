@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
@@ -9,7 +10,8 @@ import unittest, time, re
 
 class SearchRenfeCualquiera(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        binary = FirefoxBinary(r'/opt/firefox/firefox')
+        self.driver = webdriver.Firefox(firefox_binary=binary)
         self.driver.implicitly_wait(30)
         self.base_url = "http://127.0.0.1:8000/"
         self.verificationErrors = []
