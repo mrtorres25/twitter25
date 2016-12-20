@@ -138,7 +138,7 @@ class SearchNothing(unittest.TestCase):
         binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
         self.driver.implicitly_wait(5)
-        self.base_url = "http://127.0.0.1:8080/"
+        self.base_url = ip
         self.verificationErrors = []
         self.accept_next_alert = True
 
