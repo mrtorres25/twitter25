@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 python35 TestSearchRenfe.py
 python35 TestSearchNothing.py
 python35 TestSearchAfrikaans.py
