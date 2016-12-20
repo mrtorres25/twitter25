@@ -122,3 +122,23 @@ JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.m
 JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
 JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
 [Child 5744] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482232193367	geckodriver	INFO	Listening on 127.0.0.1:51329
+1482232195353	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.XXBTRTLQfmwC
+1482232195353	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482232195353	geckodriver::marionette	INFO	Connecting to Marionette on localhost:51335
+1482232196757	Marionette	INFO	Listening on port 51335
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 4264] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482232374441	geckodriver	INFO	Listening on 127.0.0.1:51424
+1482232376426	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.glQAgxenHnmR
+1482232376426	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482232376441	geckodriver::marionette	INFO	Connecting to Marionette on localhost:51430
+1482232377185	Marionette	INFO	Listening on port 51430
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 2224] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
