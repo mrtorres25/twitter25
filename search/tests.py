@@ -80,7 +80,7 @@ class TestSearchEnglish(unittest.TestCase):
 
     def test_search_english(self):
         driver = self.driver
-        driver.get(self.base_url + "")
+        driver.get(self.base_url)
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_name("username").clear()
@@ -91,7 +91,8 @@ class TestSearchEnglish(unittest.TestCase):
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
-        Select(driver.find_element_by_name("languageCode")).select_by_visible_text("English : English")
+        # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("English : English")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("En")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
@@ -138,7 +139,7 @@ class SearchNothing(unittest.TestCase):
 
     def test_search_nothing(self):
         driver = self.driver
-        driver.get(self.base_url + "")
+        driver.get(self.base_url)
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_name("username").clear()
@@ -195,7 +196,7 @@ class TestSearchAfrikaans(unittest.TestCase):
 
     def test_search_afrikaans(self):
         driver = self.driver
-        driver.get(self.base_url + "")
+        driver.get(self.base_url)
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_name("username").clear()
@@ -206,7 +207,8 @@ class TestSearchAfrikaans(unittest.TestCase):
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
-        Select(driver.find_element_by_name("languageCode")).select_by_visible_text("Afrikaans : Afrikaans")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("Af")
+        # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("Afrikaans : Afrikaans")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
