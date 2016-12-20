@@ -13,6 +13,31 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>root</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=username</td>
+	<td>root</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(@href, '/search/')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>/search/</td>
 	<td></td>
 </tr>
@@ -37,9 +62,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=div.alert.alert-success</td>
-	<td>Se ha realizado correctamente su busqueda de: &quot;Renfe&quot; ---- Idioma seleccionado: Cualquiera ---- País seleccionado: Cualquiera</td>
+	<td>clickAndWait</td>
+	<td>link=Salir</td>
+	<td></td>
 </tr>
 </tbody></table>
 </body>

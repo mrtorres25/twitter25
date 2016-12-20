@@ -467,18 +467,8 @@ def get_queryset(request):
     error=0
     message=""
     results=""
+    msg=""
     if (tosearch and tosearch.strip()):
-        # country=api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country')
-        # print(api.reverse_geocode(lat=40.447269,long=-3.691702,granularity='country'))
-        # for c in country:
-        # print(api.get_status('805709551337086980'))
-        # countryid=country[0].id
-        # print(countryid)
-
-        # for country in countries:
-        #     print(country)
-        # print(languageCode)
-
         messagelang="Idioma seleccionado: "
         if(languageCode!="0"):
             messagelang=messagelang+languageCode.capitalize()
@@ -488,6 +478,7 @@ def get_queryset(request):
             else:
                 messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
                 results = api.search(tosearch, count=100, lang=languageCode)
+
 
         else:
             messagelang = messagelang + "Cualquiera"
@@ -499,16 +490,8 @@ def get_queryset(request):
                 messagelang = messagelang + " ---- País seleccionado: " + country.capitalize()
             message = "Se ha realizado correctamente su búsqueda de: \""+tosearch+"\" ---- "+messagelang
 
-            coordinates = locateTweets(results)
-
-            if(len(coordinates)!=0):
-
-                msg = "http://maps.google.com/maps/api/staticmap?center="+coordinates[0]+"&zoom=2&size=1024x1024&maptype=roadmap"
-                for coord in coordinates:
-                    msg += "&markers="+coord
-                    msg = msg + "&sensor=false"
-            else:
-                msg = "http://maps.google.com/maps/api/staticmap?zoom=2&size=1024x1024&maptype=roadmap"
+        coordinates = locateTweets(results)
+        msg = get_map(coordinates)
     else:
         error=1
         message="No se puede realizar la búsqueda de: \""+tosearch+"\""
@@ -522,6 +505,20 @@ def get_queryset(request):
         'mapurl' : msg
                }
     return render(request, 'search/tweet_list.html', context)
+
+
+def get_map(coordinates):
+    if (len(coordinates) != 0):
+
+        msg = "http://maps.google.com/maps/api/staticmap?center=" + coordinates[
+            0] + "&zoom=2&size=1024x1024&maptype=roadmap"
+        for coord in coordinates:
+            msg += "&markers=" + coord
+            msg = msg + "&sensor=false"
+    else:
+        msg = "http://maps.google.com/maps/api/staticmap?zoom=2&size=1024x1024&maptype=roadmap"
+    return msg
+
 
 def countrycoord(country):
     response = r.get("https://restcountries.eu/rest/v1/alpha/" + country)

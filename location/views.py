@@ -23,8 +23,8 @@ def index(request):
 def get_location(request):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    #api = tweepy.API(auth)
-    api = tweepy.API(auth,proxy="proxy.wifi.uma.es:3128")
+    api = tweepy.API(auth)
+    # api = tweepy.API(auth,proxy="proxy.wifi.uma.es:3128")
     originalurl = request.GET.get('url')
     if((originalurl is not None) and (originalurl!="")):
         url = originalurl.replace("%3A",":").replace("%2F","/")
@@ -47,7 +47,7 @@ def get_location(request):
         text = getTweetText(tweet)
         user = getTweetUser(tweet)
 
-        if(coordinates=="No coordinates available." and len(rtscoordinates==0)):
+        if(coordinates=="No coordinates available." and len(rtscoordinates)==0):
             copyfile('media/blank.png','media/map.png')
             return render(request, 'location/index.html', {'msg':"No location available.",'username':"",'results':results})
         else:

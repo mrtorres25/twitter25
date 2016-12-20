@@ -17,7 +17,8 @@ def get_queryset(request):
                         '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')
     auth.set_access_token('800728740082765824-MEGhu5oDdSajvFKtcS3jcMrb8rmEkGq',
                           'RxJYOFORpm3CMX8BwCW6o5ckJ0q1TwaVfa0n3eUeAoLnR')
-    api = API(auth, proxy='proxy.wifi.uma.es:3128')
+    # api = API(auth, proxy='proxy.wifi.uma.es:3128')
+    api=API(auth)
     tosearch = request.GET['q']
     error = 0
     message = ""
@@ -27,7 +28,8 @@ def get_queryset(request):
     if (tosearch and tosearch.strip()):
         try:
             embed = tosearch.split("?")[0].replace("/", "%2F").replace(":", "%3A")
-            response = r.get("https://publish.twitter.com/oembed?url=" + embed,proxies={'https': 'https://proxy.wifi.uma.es:3128'})
+            # response = r.get("https://publish.twitter.com/oembed?url=" + embed,proxies={'https': 'https://proxy.wifi.uma.es:3128'})
+            response = r.get("https://publish.twitter.com/oembed?url=" + embed)
             j = json.dumps(response.json())
             print()
             # j=json.load(response.json())

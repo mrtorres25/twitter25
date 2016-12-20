@@ -13,6 +13,26 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>root</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=username</td>
+	<td>root</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>/search/</td>
 	<td></td>
 </tr>
@@ -32,13 +52,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=div.alert.alert-danger</td>
-	<td>No se puede realizar la busqueda de: &quot;&quot;</td>
-</tr>
-<tr>
 	<td>assertElementPresent</td>
 	<td>css=div.alert.alert-danger</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Salir</td>
 	<td></td>
 </tr>
 </tbody></table>
