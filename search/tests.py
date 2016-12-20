@@ -10,6 +10,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import unittest, time, re
+import socket
+
+ip = "127.0.0.1:8080"
 
 class SearchRenfeCualquiera(unittest.TestCase):
     def setUp(self):
@@ -17,7 +20,7 @@ class SearchRenfeCualquiera(unittest.TestCase):
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
-        self.base_url = "http://127.0.0.1:8080/"  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
+        self.base_url = ip  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.verificationErrors = []  # AGNADIR ESTO SI NO ESTA
         self.accept_next_alert = True
 
@@ -135,7 +138,7 @@ class SearchNothing(unittest.TestCase):
         binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
         self.driver.implicitly_wait(5)
-        self.base_url = "http://127.0.0.1:8080/"
+        self.base_url = ip
         self.verificationErrors = []
         self.accept_next_alert = True
 
@@ -193,7 +196,7 @@ class TestSearchAfrikaans(unittest.TestCase):
         self.driver = webdriver.Firefox(
             firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
-        self.base_url = "http://127.0.0.1:8080/"  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
+        self.base_url = ip  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.verificationErrors = []
         self.accept_next_alert = True
 

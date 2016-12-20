@@ -38,18 +38,15 @@
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/search/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="129" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+            <state relative-caret-position="259">
+              <caret line="197" column="32" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="32" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
-                <element signature="e#8014#8640#0" expanded="false" />
-                <element signature="e#9935#10085#0" expanded="false" />
-                <element signature="e#10127#10263#0" expanded="false" />
-                <element signature="e#10317#10616#0" expanded="false" />
-                <element signature="e#10650#10722#0" expanded="false" />
-                <marker date="1482239378490" expanded="false" signature="532:3051" ph="..." />
-                <marker date="1482239378490" expanded="false" signature="5734:7936" ph="..." />
-                <marker date="1482239378490" expanded="false" signature="7984:10722" ph="..." />
+                <element signature="e#3069#3114#0" expanded="false" />
+                <element signature="e#9906#10056#0" expanded="false" />
+                <element signature="e#10098#10234#0" expanded="false" />
+                <element signature="e#10288#10587#0" expanded="false" />
+                <element signature="e#10621#10693#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -668,7 +665,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1020,18 +1017,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/search/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="129" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state relative-caret-position="259">
+          <caret line="197" column="32" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="32" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#8014#8640#0" expanded="false" />
-            <element signature="e#9935#10085#0" expanded="false" />
-            <element signature="e#10127#10263#0" expanded="false" />
-            <element signature="e#10317#10616#0" expanded="false" />
-            <element signature="e#10650#10722#0" expanded="false" />
-            <marker date="1482239378490" expanded="false" signature="532:3051" ph="..." />
-            <marker date="1482239378490" expanded="false" signature="5734:7936" ph="..." />
-            <marker date="1482239378490" expanded="false" signature="7984:10722" ph="..." />
+            <element signature="e#3069#3114#0" expanded="false" />
+            <element signature="e#9906#10056#0" expanded="false" />
+            <element signature="e#10098#10234#0" expanded="false" />
+            <element signature="e#10288#10587#0" expanded="false" />
+            <element signature="e#10621#10693#0" expanded="false" />
           </folding>
         </state>
       </provider>
