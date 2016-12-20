@@ -13,8 +13,8 @@ import unittest, time, re
 
 class SearchRenfeCualquiera(unittest.TestCase):
     def setUp(self):
-        # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
-        binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
+        binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
@@ -71,9 +71,10 @@ class SearchRenfeCualquiera(unittest.TestCase):
 
 class TestSearchEnglish(unittest.TestCase):
     def setUp(self):
-        binary = FirefoxBinary(r'/opt/firefox/firefox')
+        binary = FirefoxBinary('C:/Program Files (x86)/Mozilla Firefox/firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -92,7 +93,7 @@ class TestSearchEnglish(unittest.TestCase):
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
         # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("English : English")
-        Select(driver.find_element_by_name("languageCode")).select_by_value("EN")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("en")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
@@ -130,9 +131,10 @@ class TestSearchEnglish(unittest.TestCase):
 
 class SearchNothing(unittest.TestCase):
     def setUp(self):
-        binary = FirefoxBinary(r'/opt/firefox/firefox')
+        binary = FirefoxBinary('C:/Program Files (x86)/Mozilla Firefox/firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -186,10 +188,11 @@ class SearchNothing(unittest.TestCase):
 
 class TestSearchAfrikaans(unittest.TestCase):
     def setUp(self):
-        binary = FirefoxBinary(r'/opt/firefox/firefox')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
+        binary = FirefoxBinary('C:/Program Files (x86)/Mozilla Firefox/firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary(r'/opt/firefox/firefox')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(
             firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -207,7 +210,7 @@ class TestSearchAfrikaans(unittest.TestCase):
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
-        Select(driver.find_element_by_name("languageCode")).select_by_value("AF")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("af")
         # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("Afrikaans : Afrikaans")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))

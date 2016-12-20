@@ -293,3 +293,119 @@ JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.m
 JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
 JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
 [Child 5164] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238359779	geckodriver	INFO	Listening on 127.0.0.1:52823
+1482238361772	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.OF49l03HXyOP
+1482238361775	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238361779	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52829
+1482238363111	Marionette	INFO	Listening on port 52829
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6252] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238369217	geckodriver	INFO	Listening on 127.0.0.1:52909
+1482238371200	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.Stl8v5ZMgOCA
+1482238371204	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\Firefox.exe
+1482238371207	geckodriver::marionette	INFO	Connecting to Marionette on localhost:52916
+1482238372550	Marionette	INFO	Listening on port 52916
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 7064] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238380007	geckodriver	INFO	Listening on 127.0.0.1:52998
+1482238381980	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.cQd4qZLOllxV
+1482238381984	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238381988	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53005
+1482238383296	Marionette	INFO	Listening on port 53005
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6516] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238393684	geckodriver	INFO	Listening on 127.0.0.1:53088
+1482238395672	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.a5RbuL8dINF7
+1482238395676	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238395678	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53095
+1482238397014	Marionette	INFO	Listening on port 53095
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6448] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238431979	geckodriver	INFO	Listening on 127.0.0.1:53176
+1482238433974	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.M9QUwx9ptCyu
+1482238433978	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238433981	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53182
+1482238435427	Marionette	INFO	Listening on port 53182
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6804] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238440449	geckodriver	INFO	Listening on 127.0.0.1:53258
+1482238442406	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.sx7powi4k5H9
+1482238442410	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\Firefox.exe
+1482238442412	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53265
+1482238443481	Marionette	INFO	Listening on port 53265
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 1496] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238451386	geckodriver	INFO	Listening on 127.0.0.1:53348
+1482238453368	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.sZAad6ZeqeZs
+1482238453371	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238453376	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53355
+1482238454690	Marionette	INFO	Listening on port 53355
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6248] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238464370	geckodriver	INFO	Listening on 127.0.0.1:53435
+1482238466353	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.Cv7rVVPptxPX
+1482238466356	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238466360	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53442
+1482238467676	Marionette	INFO	Listening on port 53442
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6820] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238573183	geckodriver	INFO	Listening on 127.0.0.1:53526
+1482238575180	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.gC00frD7jlsC
+1482238575183	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238575187	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53532
+1482238576376	Marionette	INFO	Listening on port 53532
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 7076] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238581621	geckodriver	INFO	Listening on 127.0.0.1:53607
+1482238583601	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.T1quGu2dXG7v
+1482238583605	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\Firefox.exe
+1482238583610	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53614
+1482238584491	Marionette	INFO	Listening on port 53614
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6912] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238591396	geckodriver	INFO	Listening on 127.0.0.1:53697
+1482238593380	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.9OT53ECbaT1i
+1482238593384	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238593387	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53704
+1482238594554	Marionette	INFO	Listening on port 53704
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 4004] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1482238600199	geckodriver	INFO	Listening on 127.0.0.1:53787
+1482238602181	mozprofile::profile	INFO	Using profile path C:\Users\Jose\AppData\Local\Temp\rust_mozprofile.GqB4yPcn5EeY
+1482238602184	geckodriver::marionette	INFO	Starting browser C:/Program Files (x86)/Mozilla Firefox/firefox.exe
+1482238602188	geckodriver::marionette	INFO	Connecting to Marionette on localhost:53794
+1482238603303	Marionette	INFO	Listening on port 53794
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+[Child 6188] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
