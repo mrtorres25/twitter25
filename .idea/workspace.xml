@@ -27,16 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/location/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestSearchEnglishPy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/Selenium/TestSearchEnglishPy.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,7 +63,17 @@
         <entry file="file://$PROJECT_DIR$/executeTest.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tweet_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/search/templates/search/tweet_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -106,11 +106,9 @@
       <file leaf-file-name="TestSearchNothing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/test/TestSearchNothing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-              <folding>
-                <element signature="e#24#54#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -118,21 +116,29 @@
       <file leaf-file-name="TestSearchRenfe.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/test/TestSearchRenfe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="29" column="76" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
-              <folding>
-                <element signature="e#24#54#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/searchByUrl/views.py">
+      <file leaf-file-name="TestSearchRenfe.bak" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/search/test/TestSearchRenfe.bak">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="29" column="76" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
+              <folding>
+                <marker date="1482227057547" expanded="true" signature="24:414" ph="import ..." />
+                <marker date="1482227057547" expanded="true" signature="463:2560" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="484:767" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="816:1762" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="1812:1947" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="1984:2105" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="2154:2450" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="2167:2403" ph="..." />
+                <marker date="1482227057547" expanded="true" signature="2479:2560" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,7 +166,6 @@
         <option value="$PROJECT_DIR$/users/templates/users/index.html" />
         <option value="$PROJECT_DIR$/users/static/users/css/styles.css" />
         <option value="$PROJECT_DIR$/searchByUrl/views.py" />
-        <option value="$PROJECT_DIR$/search/templates/search/tweet_list.html" />
         <option value="$PROJECT_DIR$/search/TestSearchEnglishPy.py" />
         <option value="$PROJECT_DIR$/searchByUrl/static/searchByUrl/css/styles.css" />
         <option value="$PROJECT_DIR$/twitteranalytics/urls.py" />
@@ -183,6 +188,7 @@
         <option value="$PROJECT_DIR$/search/test/TestSearchAfrikaans.py" />
         <option value="$PROJECT_DIR$/search/test/TestSearchEnglish.py" />
         <option value="$PROJECT_DIR$/search/test/TestSearchNothing.py" />
+        <option value="$PROJECT_DIR$/search/templates/search/tweet_list.html" />
         <option value="$PROJECT_DIR$/search/test/TestSearchRenfe.py" />
         <option value="$PROJECT_DIR$/executeTest.sh" />
       </list>
@@ -291,6 +297,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twitteranalytics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twitteranalytics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -680,14 +708,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/search/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/searchByUrl/templates/searchByUrl/tweet_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
@@ -837,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/templates/search/tweet_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="34" column="66" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
@@ -977,16 +990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/test/TestSearchNothing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-          <folding>
-            <element signature="e#24#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search/test/TestSearchEnglish.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1007,20 +1010,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/test/TestSearchRenfe.py">
+    <entry file="file://$PROJECT_DIR$/search/test/TestSearchRenfe.bak">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="29" column="76" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
           <folding>
-            <element signature="e#24#54#0" expanded="true" />
+            <marker date="1482227057547" expanded="true" signature="24:414" ph="import ..." />
+            <marker date="1482227057547" expanded="true" signature="463:2560" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="484:767" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="816:1762" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="1812:1947" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="1984:2105" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="2154:2450" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="2167:2403" ph="..." />
+            <marker date="1482227057547" expanded="true" signature="2479:2560" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/templates/search/tweet_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/test/TestSearchNothing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/test/TestSearchRenfe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/executeTest.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
           <folding />
         </state>
       </provider>

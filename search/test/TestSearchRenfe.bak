@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import unittest, time, re
 
 class SearchRenfeCualquiera(unittest.TestCase):
@@ -25,13 +25,13 @@ class SearchRenfeCualquiera(unittest.TestCase):
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_xpath("(//a[contains(@href, '/search/')])[2]").click()
         driver.get(self.base_url + "/search/")
-        self.assertTrue(self.is_element_present(By.ID, "alertinfo"))
+        self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-info"))
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
         driver.find_element_by_css_selector("button.btn").click()
-        # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
-        self.assertTrue(self.is_element_present(By.ID, "alertok"))
+        self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
     
     def is_element_present(self, how, what):

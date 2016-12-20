@@ -16,13 +16,13 @@
 {% endblock javascript %}
 {% block content %}
     {% if errorcode == 0 %}
-        <div class="alert alert-success" role="alert">{{ message }}</div>
+        <div id="alertok" class="alert alert-success" role="alert">{{ message }}</div>
     {% endif %}
     {% if errorcode == -1 %}
-        <div class="alert alert-info" role="alert">{{ message }}</div>
+        <div id="alertinfo" class="alert alert-info" role="alert">{{ message }}</div>
     {% endif %}
     {% if errorcode == 1 %}
-        <div class="alert alert-danger" role="alert">{{ message }}</div>
+        <div id="alertdanger" class="alert alert-danger" role="alert">{{ message }}</div>
     {% endif %}
     <form id="searchform" action="/search/get_queryset/" method="get" accept-charset="utf-8">
         <button class="btn" type="submit">
