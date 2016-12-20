@@ -92,7 +92,7 @@ class TestSearchEnglish(unittest.TestCase):
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
         # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("English : English")
-        Select(driver.find_element_by_name("languageCode")).select_by_value("En")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("EN")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
@@ -207,7 +207,7 @@ class TestSearchAfrikaans(unittest.TestCase):
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
-        Select(driver.find_element_by_name("languageCode")).select_by_value("Af")
+        Select(driver.find_element_by_name("languageCode")).select_by_value("AF")
         # Select(driver.find_element_by_name("languageCode")).select_by_visible_text("Afrikaans : Afrikaans")
         driver.find_element_by_css_selector("button.btn").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
