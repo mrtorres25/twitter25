@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
@@ -58,7 +59,7 @@ class TestSearchAfrikaans(unittest.TestCase):
     
     def tearDown(self):
         self.driver.quit()
-        # self.assertEqual([], self.verificationErrors)
+        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()
