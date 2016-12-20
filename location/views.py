@@ -40,18 +40,32 @@ def get_location(request):
         if(coordinates=="" and location!=""):
             coordinates = getTweetPlace(tweet)
         else:
-            coordinates = "No coordinates available."
+            coordinates = "No hay coordenadas disponibles."
         rts = getRetweetsCoordinates(getStatusId(url),api)
         rtscoordinates = rts["locations"]
         rtsplaces = rts["places"]
         text = getTweetText(tweet)
         user = getTweetUser(tweet)
 
-        if(coordinates=="No coordinates available." and len(rtscoordinates)==0):
-            copyfile('media/blank.png','media/map.png')
-            return render(request, 'location/index.html', {'msg':"No location available.",'username':"",'results':results})
+        if(coordinates=="No hay coordenadas disponibles." and len(rtscoordinates)==0):
+            msg = ""
+            mapurl = "http://maps.google.com/maps/api/staticmap?&zoom=2&size=1024x1024&maptype=roadmap"
+            rtscoordinates = ["No hay coordenadas disponibles."]
+
+            context = {
+                'msg' : msg,
+                'mapurl' : mapurl,
+                'username' : user,
+                'coordinates' : coordinates,
+                'text' : text,
+                'results' : results,
+                'rtscoordinates' : rtscoordinates,
+                'jsonhtml' : embeddedtweet
+            }
+
+            return render(request, 'location/index.html', context)
         else:
-            if(coordinates!="No coordinates available."):
+            if(coordinates!="No hay coordenadas disponibles."):
                 msg = "http://maps.google.com/maps/api/staticmap?center="+coordinates+"&zoom=4&size=1024x1024&maptype=roadmap&markers=color:blue|"+coordinates
             else:
                 msg = "http://maps.google.com/maps/api/staticmap?center="+rtscoordinates[0]+"&zoom=4&size=1024x1024&maptype=roadmap"
@@ -59,6 +73,9 @@ def get_location(request):
             for coord in rtscoordinates:
                 msg += "&markers="+coord
             msg = msg + "&sensor=false"
+
+            if(len(rtscoordinates)==0):
+                rtscoordinates = ["No hay coordenadas disponibles."]
 
             mapurl = msg
             msg = ""
