@@ -25,7 +25,7 @@ class TestSearchEnglish(unittest.TestCase):
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-        driver.get(self.base_url + "/search/")
+        driver.find_element_by_xpath("(//a[contains(@href, '/search/')])[2]").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-info"))
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_id("searchbox").clear()

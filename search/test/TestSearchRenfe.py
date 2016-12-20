@@ -12,6 +12,7 @@ class SearchRenfeCualquiera(unittest.TestCase):
     def setUp(self):
         binary = FirefoxBinary(r'/opt/firefox/firefox')
         self.driver = webdriver.Firefox(firefox_binary=binary)
+        # self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
@@ -25,7 +26,7 @@ class SearchRenfeCualquiera(unittest.TestCase):
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-        driver.get(self.base_url + "/search/")
+        driver.find_element_by_xpath("(//a[contains(@href, '/search/')])[2]").click()
         self.assertTrue(self.is_element_present(By.ID, "alertinfo"))
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("Renfe")
