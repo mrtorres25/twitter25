@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 import tweepy
 from django.core.context_processors import csrf
+from django.conf import settings
 from tweepy.error import TweepError
 from django.contrib.auth.decorators import login_required
 import requests
@@ -21,8 +22,8 @@ def index(request):
 
 @login_required(login_url='/login/')
 def get_location(request):
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
+    auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
     # api = tweepy.API(auth,proxy="proxy.wifi.uma.es:3128")
     originalurl = request.GET.get('url')

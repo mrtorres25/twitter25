@@ -12,6 +12,11 @@
                 "order": [[2, "desc"]]
             });
         });
+        $(document).ready(function () {
+            url = "{{ result_with_text.profile_image_url }}";
+            var urlFix = url.replace("_normal", "");
+            $("#profileImage").attr("src", urlFix);
+        });
     </script>
 {% endblock javascript %}
 {% block content %}
@@ -34,8 +39,8 @@
     {#    <blockquote class="twitter-tweet"><p lang="es" dir="ltr">🌧🌱⚽️ <a href="https://twitter.com/hashtag/RMCity?src=hash">#RMCity</a><br>En 15 minutos, volvemos a los entrenamientos y comenzamos a preparar el partido contra el <a href="https://twitter.com/BVB">@BVB</a>. <a href="https://twitter.com/hashtag/HalaMadrid?src=hash">#HalaMadrid</a> <a href="https://t.co/9EQ351WoG8">pic.twitter.com/9EQ351WoG8</a></p>&mdash; Real Madrid C. F. (@realmadrid) <a href="https://twitter.com/realmadrid/status/805709551337086980">December 5, 2016</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>#}
     <h2>Usuario</h2>
     <h2>Información</h2>
-
-    <table style="width:100%" border="2px">
+    <table class="table table-striped" style="width:100%" border="2px">
+        <td rowspan="6" width="15%"><img id="profileImage" height="256px"></td>
         <tr>
             <th>User:</th>
             <td>{{ result_with_text.name }}</td>
