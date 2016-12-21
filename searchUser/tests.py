@@ -23,7 +23,7 @@ class TestElpais(unittest.TestCase):
 
     def test_elpais(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
+        driver.get(self.base_url)
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
@@ -79,7 +79,7 @@ class TestNothing(unittest.TestCase):
 
     def test_nothing(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
+        driver.get(self.base_url)
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
