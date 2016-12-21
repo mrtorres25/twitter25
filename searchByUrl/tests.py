@@ -14,13 +14,14 @@ class SearchBadLink(unittest.TestCase):
     def setUp(self):
         binary = FirefoxBinary(r'/opt/firefox/firefox')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
         self.accept_next_alert = True
 
     def test_search_bad_link(self):
         driver = self.driver
+        driver.get(self.base_url)
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
@@ -79,13 +80,14 @@ class SearchAnUMASTweet(unittest.TestCase):
     def setUp(self):
         binary = FirefoxBinary(r'/opt/firefox/firefox')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(5)
         self.base_url = "http://127.0.0.1:8080/"
         self.verificationErrors = []
         self.accept_next_alert = True
 
     def test_search_an_u_m_a_s_tweet(self):
         driver = self.driver
+        driver.get(self.base_url)
         # ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
