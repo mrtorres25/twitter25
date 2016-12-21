@@ -1,9 +1,56 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Home {% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'twitteranalytics/users/css/styles.css' %}">
-{% endblock css %}
+{% block css %}{% endblock css %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function () {
+            refreshtt();
+        });
+        function refreshtt() {
+            $.ajax({
+                contentType: 'application/json',
+                url: 'trending',
+                type: 'get', // This is the default though, you don't actually need to always mention it
+                data: {
+                    "q": $( "#idwoeidCode" ).val()
+                },
+                success: function (data) {
+                    $("#ttbodyRow1").empty();
+                    $("#ttbodyRow2").empty();
+                    $("#lastRefresh").empty();
+                    var trHTML = '<tr>';
+                    var trHTML2 = '<tr>';
+                    var cont=1;
+                    $.each(data,function (i,obj) {
+                        if(cont<5) {
+                            trHTML += '<td>' + obj.name + '</td>';
+                            cont++;
+                        }else if(cont==5){
+                            trHTML += '<td>' + obj.name + '</td>';
+                            trHTML+='</tr>';
+                            $('#ttbodyRow1').append(trHTML);
+                            cont++;
+                        }else if(cont>5&&cont<=9){
+                            trHTML2 += '<td>' + obj.name + '</td>';
+                            cont++;
+                        }else if(cont==10){
+                            trHTML2 += '<td>' + obj.name + '</td>';
+                            trHTML2+='</tr>';
+                            $('#ttbodyRow2').append(trHTML2);
+                            cont++;
+                        }
+                    });
+                    $("#lastRefresh").append("Actualizado a: "+Date());
+                },
+                failure: function (data) {
+                    alert('Got an error dude');
+                }
+            });
+        }
+    </script>
+{% endblock %}
 
 {% block content %}
     {% if errorcode == 'danger' %}
@@ -52,6 +99,40 @@
         </div>
     </div>
 </div>
+    <h3>#TrendingTopics</h3>
+    <div>
+        Selecciona un país:
+        <select onchange="refreshtt()" id="idwoeidCode" name="woeidCode">
+        {% for awoeid in woeidlist %}
+            <option value="{{ awoeid.woeid }}">{{ awoeid.name }}</option>
+        {% endfor %}
+    </select>
+        <button onclick="refreshtt()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <p id="lastRefresh"></p>
+    <table class="table table-striped" id="tt" style="width:100%;table-layout: fixed;word-wrap:break-word;">
+        <thead class="thead-inverse"><tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+        </tr>
+        </thead>
+        <tbody id="ttbodyRow1">
+        </tbody>
+        <thead class="thead-inverse">
+        <tr>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+        </tr>
+        </thead>
+        <tbody id="ttbodyRow2">
+        </tbody>
+    </table>
+    </div>
 
 {#    <form class="form-horizontal" method="post" action="" role="form">#}
 {#        {% csrf_token %}#}

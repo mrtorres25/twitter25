@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from tweepy import API
 from tweepy import OAuthHandler
@@ -13,10 +14,8 @@ def tweet_list(request):
 
 @login_required(login_url='/login/')
 def get_queryset(request):
-    auth = OAuthHandler('wbSKrzlEya3UJgBzkIkSEkz3F',
-                        '5GXAfWSO99HZ2QFhEihb4NF4y9lTvIaCt80mvpUCTr2kMha9Fi')
-    auth.set_access_token('800728740082765824-MEGhu5oDdSajvFKtcS3jcMrb8rmEkGq',
-                          'RxJYOFORpm3CMX8BwCW6o5ckJ0q1TwaVfa0n3eUeAoLnR')
+    auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
+    auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
     # api = API(auth, proxy='proxy.wifi.uma.es:3128')
     api=API(auth)
     tosearch = request.GET['q']
