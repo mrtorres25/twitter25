@@ -109,8 +109,6 @@ class SearchAnUMASTweet(unittest.TestCase):
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_xpath("(//button[@type='button'])[3]").click()
         driver.find_element_by_xpath("(//button[@type='button'])[3]").click()
-        self.assertRegexpMatches(driver.find_element_by_css_selector("div.alert.alert-success").text,
-                                 "^exact:Se ha realizado correctamente su busqueda del tweet con url: \"https://twitter\\.com/InfoUMA/status/807170636091105280[\\s\\S]lang=es\"$")
         driver.find_element_by_link_text("Salir").click()
 
     def is_element_present(self, how, what):
