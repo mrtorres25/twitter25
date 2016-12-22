@@ -133,7 +133,7 @@ class Logout(unittest.TestCase):
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
         driver.find_element_by_link_text("Salir").click()
         time.sleep(10)
-        self.assertEqual("Home", driver.title)
+        self.assertEqual("Login", driver.title)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
