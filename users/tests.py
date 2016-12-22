@@ -23,14 +23,13 @@ class CorrectLogin(unittest.TestCase):
     
     def test_correct_login(self):
         driver = self.driver
-        driver.find_element_by_link_text("Login").click()
+        driver.get(self.base_url + "/")
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
-        # ERROR: Caught exception [unknown command []]
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -62,7 +61,7 @@ if __name__ == "__main__":
 
 
 
-class CorrectLogin(unittest.TestCase):
+class WrongLogin(unittest.TestCase):
     def setUp(self):
         # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
@@ -72,16 +71,15 @@ class CorrectLogin(unittest.TestCase):
         self.verificationErrors = []  # AGNADIR ESTO SI NO ESTA
         self.accept_next_alert = True
     
-    def test_correct_login(self):
+    def test_wrong_login(self):
         driver = self.driver
-        driver.find_element_by_link_text("Login").click()
+        driver.get(self.base_url + "/")
         driver.find_element_by_name("username").clear()
-        driver.find_element_by_name("username").send_keys("root")
+        driver.find_element_by_name("username").send_keys("samuel")
         driver.find_element_by_name("password").clear()
-        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("password").send_keys("samuel")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-        self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
-        # ERROR: Caught exception [unknown command []]
+        self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-danger"))
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -113,7 +111,7 @@ if __name__ == "__main__":
 
 
 
-class CorrectLogin(unittest.TestCase):
+class Logout(unittest.TestCase):
     def setUp(self):
         # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
@@ -123,16 +121,17 @@ class CorrectLogin(unittest.TestCase):
         self.verificationErrors = []  # AGNADIR ESTO SI NO ESTA
         self.accept_next_alert = True
     
-    def test_correct_login(self):
+    def test_logout(self):
         driver = self.driver
-        driver.find_element_by_link_text("Login").click()
+        driver.get(self.base_url + "/")
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
-        # ERROR: Caught exception [unknown command []]
+        driver.find_element_by_link_text("Salir").click()
+        self.assertEqual("Login", driver.title)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
