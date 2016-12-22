@@ -14,9 +14,9 @@ import socket
 
 ip = "http://127.0.0.1:8080"
 
-class Blanktest(unittest.TestCase):
+class BlankTest(unittest.TestCase):
     def setUp(self):
-        #binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
@@ -26,9 +26,20 @@ class Blanktest(unittest.TestCase):
 
     def test_blank(self):
         driver = self.driver
-        driver.get(self.base_url + "/location/")
-        driver.find_element_by_id("searchbox").clear()
-        driver.find_element_by_id("searchbox").send_keys("https://twitter.com/lucacdc/status/804059526840418304")
+        driver.get(self.base_url + "/")
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_link_text(u"Localización Tweet").click()
+        driver.find_element_by_css_selector("button.searchbutton").click()
+        self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^[\s\S]*Coordenadas del tweet original: Empty URL, enter a valid URL\.[\s\S]*$")
+        driver.find_element_by_link_text("Salir").click()
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -55,9 +66,9 @@ class Blanktest(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-class Invalidtest(unittest.TestCase):
+class InvalidTest(unittest.TestCase):
     def setUp(self):
-        #binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
@@ -67,11 +78,22 @@ class Invalidtest(unittest.TestCase):
 
     def test_invalid(self):
         driver = self.driver
-        driver.get(self.base_url + "/location/")
+        driver.get(self.base_url + "/")
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_link_text(u"Localización Tweet").click()
         driver.find_element_by_id("searchbox").clear()
-        driver.find_element_by_id("searchbox").send_keys("64trgfjki34")
+        driver.find_element_by_id("searchbox").send_keys("fj8495uyug")
         driver.find_element_by_css_selector("button.searchbutton").click()
-        self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^[\s\S]*Invalid URL or tweet ID, try again\.[\s\S]*$")
+        self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^[\s\S]*Coordenadas del tweet original: Invalid URL or tweet ID, try again\.[\s\S]*$")
+        driver.find_element_by_link_text("Salir").click()
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -98,9 +120,9 @@ class Invalidtest(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-class Madridtest(unittest.TestCase):
+class MadridTest(unittest.TestCase):
     def setUp(self):
-        #binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
@@ -110,11 +132,22 @@ class Madridtest(unittest.TestCase):
 
     def test_madrid(self):
         driver = self.driver
-        driver.get(self.base_url + "/location/")
+        driver.get(self.base_url + "/")
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_link_text(u"Localización Tweet").click()
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("https://twitter.com/hohahehoha/status/808337681616867328")
         driver.find_element_by_css_selector("button.searchbutton").click()
-        self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^Coordenadas del tweet original: 40\.3120713,-3\.8890049[\s\S]*$")
+        self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^[\s\S]*Coordenadas del tweet original: 40\.3120713,-3\.8890049[\s\S]*$")
+        driver.find_element_by_link_text("Salir").click()
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -141,10 +174,9 @@ class Madridtest(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-
-class Nolocationtest(unittest.TestCase):
+class NoLocationTest(unittest.TestCase):
     def setUp(self):
-        #binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
+        # binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\Firefox.exe')  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN TU CASA
         binary = FirefoxBinary(r'/opt/firefox/firefox')  #ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver = webdriver.Firefox(firefox_binary=binary)  # ESTO HAY QUE PONERLO PARA AUTOMATIZAR LAS PRUEBAS EN AMAZON
         self.driver.implicitly_wait(5)
@@ -152,13 +184,24 @@ class Nolocationtest(unittest.TestCase):
         self.verificationErrors = []  # AGNADIR ESTO SI NO ESTA
         self.accept_next_alert = True
 
-    def test_nolocation(self):
+    def test_no_location(self):
         driver = self.driver
-        driver.get(self.base_url + "/location/")
+        driver.get(self.base_url + "/")
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_link_text(u"Localización Tweet").click()
         driver.find_element_by_id("searchbox").clear()
         driver.find_element_by_id("searchbox").send_keys("https://twitter.com/charlie0x0/status/811714970933227521")
         driver.find_element_by_css_selector("button.searchbutton").click()
         self.assertRegexpMatches(driver.find_element_by_css_selector("div.container").text, r"^[\s\S]*Coordenadas del tweet original: No hay coordenadas disponibles\.[\s\S]*$")
+        driver.find_element_by_link_text("Salir").click()
+        driver.find_element_by_name("password").clear()
+        driver.find_element_by_name("password").send_keys("root")
+        driver.find_element_by_name("username").clear()
+        driver.find_element_by_name("username").send_keys("root")
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
@@ -184,7 +227,6 @@ class Nolocationtest(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
-
 
 if __name__ == "__main__":
     unittest.main()
