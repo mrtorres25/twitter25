@@ -23,7 +23,7 @@ class CorrectLogin(unittest.TestCase):
     
     def test_correct_login(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
+        driver.get(self.base_url)
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
@@ -74,7 +74,7 @@ class WrongLogin(unittest.TestCase):
     
     def test_wrong_login(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
+        driver.get(self.base_url)
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("samuel")
         driver.find_element_by_name("password").clear()
@@ -124,7 +124,7 @@ class Logout(unittest.TestCase):
     
     def test_logout(self):
         driver = self.driver
-        driver.get(self.base_url + "/")
+        driver.get(self.base_url)
         driver.find_element_by_name("username").clear()
         driver.find_element_by_name("username").send_keys("root")
         driver.find_element_by_name("password").clear()
