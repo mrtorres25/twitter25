@@ -35,7 +35,7 @@ def get_location(request):
             embeddedtweet = getEmbeddedTweet(originalurl)
         except TweepError:
             copyfile('media/blank.png','media/map.png')
-            return render(request, 'location/index.html', {'coordinates' : "Invalid URL or tweet ID, try again.",'username':""})
+            return render(request, 'location/index.html', {'msg' : "Invalid URL or tweet ID, try again.",'username':""})
         coordinates = getTweetCoordinates(tweet)
         location = getTweetLocation(tweet)
         if(coordinates=="" and location!=""):
@@ -96,7 +96,7 @@ def get_location(request):
 
     else:
         copyfile('media/blank.png','media/map.png')
-        return render(request, 'location/index.html', {'coordinates' : "Empty URL, enter a valid URL.",'username':""})
+        return render(request, 'location/index.html', {'msg' : "Empty URL, enter a valid URL.",'username':""})
 
 def getTweetLocation(tweet):
     if(tweet.place) is not None:
