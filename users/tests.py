@@ -30,6 +30,7 @@ class CorrectLogin(unittest.TestCase):
         driver.find_element_by_name("password").send_keys("root")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "div.alert.alert-success"))
+        driver.find_element_by_link_text("Salir").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
